@@ -14,10 +14,15 @@
   },
   "dependencies": {
     "gatsby": "^2.5.0",
+    "gatsby-source-filesystem": "^2.0.36",
+    "gatsby-transformer-remark": "^2.3.12",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.1"
   },
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "prettier": "^1.17.1"
   },
   "repository": {

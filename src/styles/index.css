@@ -1,0 +1,15 @@
+* {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'avenir';
+}
+
+* h2 {
+  margin-bottom: 0;
+}
+
+* p {
+  margin-top: 0;
+  opacity: 0.5;
+}
