@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Container, Header, Divider } from "semantic-ui-react"
+import { Container, Header } from "semantic-ui-react"
 import SiteNavFooter from "../components/SiteNavFooter"
 
 const Template = ({data, pageContext}) => {
