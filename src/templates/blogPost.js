@@ -1,17 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Container, Header } from "semantic-ui-react"
+import { Container, Divider, Header, Segment, Icon } from "semantic-ui-react"
 import SiteNavFooter from "../components/SiteNavFooter"
 
 const Template = ({data, pageContext}) => {
   const {markdownRemark} = data
   const {next, prev} = pageContext
-  const {title} = markdownRemark.frontmatter
+  const {title, excerpt} = markdownRemark.frontmatter
   const {html} = markdownRemark
 
   return (
     <Container textAlign="justified">
-      <Header as="h4">{title}</Header>
+      <Header as="h1">{title}</Header>
+      <Segment raised>{excerpt}</Segment>
+      <Divider horizontal>
+        <Icon name="file alternate outline" />
+      </Divider>
       <div className="blogpost" dangerouslySetInnerHTML={{__html: html}} />
       <SiteNavFooter prev={prev} next={next} />
     </Container>
@@ -24,15 +28,10 @@ export const query = graphql`
       html
       frontmatter {
         title
+        excerpt
       }
     }
   }
 `
 
 export default Template
-
-// <List bulleted horizontal>
-//           <List.Item><Link to="/">Home</Link></List.Item>
-//           {prev && <List.Item><Link to={prev.frontmatter.path}>Previous</Link></List.Item>}
-//           {next && <List.Item><Link to={next.frontmatter.path}>Next</Link></List.Item>}
-//         </List>
