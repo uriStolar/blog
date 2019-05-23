@@ -5,7 +5,6 @@ import SiteNavFooter from "../components/SiteNavFooter";
 
 const AllTagsTemplate = ({data, pageContext}) => {
   const {tags} = pageContext
-  console.log(tags)
   return (
     <Container textAlign="justified">
       <Header as="h4">Tags</Header>

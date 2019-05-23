@@ -14,7 +14,7 @@ const Template = ({data, pageContext}) => {
       <Header as="h1">{title}</Header>
       <Segment raised>{excerpt}</Segment>
       <Divider horizontal>
-        <Icon name="file alternate outline" />
+        <Icon name="file alternate" />
       </Divider>
       <div className="blogpost" dangerouslySetInnerHTML={{__html: html}} />
       <SiteNavFooter prev={prev} next={next} />
