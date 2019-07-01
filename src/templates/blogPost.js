@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Container, Divider, Header, Segment, Icon } from 'semantic-ui-react'
 import SiteNavFooter from '../components/SiteNavFooter'
+import 'semantic-ui-css/semantic.min.css'
 
 const Template = ({ data, pageContext }) => {
   const { markdownRemark } = data

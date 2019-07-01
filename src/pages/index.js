@@ -1,33 +1,32 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { Container, Divider, Icon, Header } from "semantic-ui-react"
-import SiteHeader from "../components/SiteHeader"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import { Container, Divider, Icon, Header } from 'semantic-ui-react'
+import SiteHeader from '../components/SiteHeader'
 import 'semantic-ui-css/semantic.min.css'
-
 
 const Layout = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
-    <Container textAlign="center">
-    <SiteHeader />
-    <Divider horizontal>
-      <Header as="h4">
-        <Icon name="file alternate" />
+    <Container textAlign='center'>
+      <SiteHeader />
+      <Divider horizontal>
+        <Header as='h4'>
+          <Icon name='file alternate' />
         Posts
-      </Header>
-    </Divider>
-    {edges.map(edge => {
-      const { frontmatter } = edge.node
-      return (
-        <div key={frontmatter.path}>
-          <Link to={frontmatter.path}>
-            {frontmatter.title}
-          </Link>
-        </div>
-      )
-    })}
-    <br/>
-    <Link to="/tags">Browse posts by tags</Link>
+        </Header>
+      </Divider>
+      {edges.map(edge => {
+        const { frontmatter } = edge.node
+        return (
+          <div key={frontmatter.path}>
+            <Link to={frontmatter.path}>
+              {frontmatter.title}
+            </Link>
+          </div>
+        )
+      })}
+      <br />
+      <Link to='/tags'>Browse posts by tags</Link>
     </Container>
   )
 }
