@@ -2,7 +2,7 @@
 path: /notas-algoritmos-hackerrank
 date: 2019-07-01
 title: Notas de algoritmos vistos en HackerRank
-tags: ['CIM', 'AEM', 'IPN', 'montañismo']
+tags: ['algoritmos', 'hackerrank', 'javascript']
 excerpt: Resumen sobre los puntos más importantes referentes a los algoritmos vistos en https://hackerrank.com
 ---
 # Notas de algoritmos vistos en HackerRank 📚
