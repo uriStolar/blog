@@ -13,19 +13,19 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
 const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve('src/templates/allTagsIndex.js')
   const singleTagIndexTemplate = path.resolve('src/templates/singleTagIndex.js')
-  
+
   const postsByTag = {}
 
-  posts.forEach(({node}) => {
+  posts.forEach(({ node }) => {
     if (node.frontmatter.tags) {
       node.frontmatter.tags.forEach(tag => {
-        if(!postsByTag[tag]) {
+        if (!postsByTag[tag]) {
           postsByTag[tag] = []
         }
         postsByTag[tag].push(node)
       })
     }
-  }) 
+  })
 
   const tags = Object.keys(postsByTag)
 
@@ -76,26 +76,26 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       `)
-      .then(result => {
-        if (result.errors) {
-          return reject(result.errors)
-        }
-        const posts = result.data.allMarkdownRemark.edges
-        createTagPages(createPage, posts)
-        posts.forEach(({node}, idx) => {
-          const path = node.frontmatter.path
-          createPage({
-            path,
-            component: blogPostTemplate,
-            context: {
-              pathSlug: path,
-              prev: idx === 0 ? null : posts[idx - 1].node,
-              next: idx === posts.length - 1 ? null : posts[idx + 1].node
-            }
+        .then(result => {
+          if (result.errors) {
+            return reject(result.errors)
+          }
+          const posts = result.data.allMarkdownRemark.edges
+          createTagPages(createPage, posts)
+          posts.forEach(({ node }, idx) => {
+            const path = node.frontmatter.path
+            createPage({
+              path,
+              component: blogPostTemplate,
+              context: {
+                pathSlug: path,
+                prev: idx === 0 ? null : posts[idx - 1].node,
+                next: idx === posts.length - 1 ? null : posts[idx + 1].node
+              }
+            })
+            resolve()
           })
-          resolve()
         })
-      })
     )
   })
 }
