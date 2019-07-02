@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Container, Divider, Header, Segment, Icon } from 'semantic-ui-react'
 import SiteNavFooter from '../components/SiteNavFooter'
 import 'semantic-ui-css/semantic.min.css'
+import 'github-markdown-css'
 
 const Template = ({ data, pageContext }) => {
   const { markdownRemark } = data
@@ -17,7 +18,7 @@ const Template = ({ data, pageContext }) => {
       <Divider horizontal>
         <Icon name='file alternate' />
       </Divider>
-      <div className='blogpost' dangerouslySetInnerHTML={{ __html: html }} />
+      <div className='blogpost markdown-body' dangerouslySetInnerHTML={{ __html: html }} />
       <SiteNavFooter prev={prev} next={next} />
     </Container>
   )
