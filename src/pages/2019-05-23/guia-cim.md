@@ -1,12 +1,10 @@
 ---
 path: /guia-examen-cim
 date: 2019-05-23
-title: Guía para examen del CIM
+title: Guía para examen del CIM - AEM IPN
 tags: ['CIM', 'AEM', 'IPN', 'montañismo']
 excerpt: Resumen con los puntos más relevantes de las clases teóricas del CIM-A 2019 de la AEM-IPN.
 ---
-# Guía para examen del CIM - AEM IPN
-
 ## Montañismo 🏔️
 Excursión de zonas de relieve con fines deportivos, científicos, lúdicos, espirituales, etc.
 

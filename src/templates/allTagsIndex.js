@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { Container, Header } from 'semantic-ui-react'
 import SiteNavFooter from '../components/SiteNavFooter'
-import 'semantic-ui-css/semantic.min.css'
 
 const AllTagsTemplate = ({ data, pageContext }) => {
   const { tags } = pageContext
   return (
-    <Container textAlign='justified'>
+    <Container text textAlign='justified'>
+      <br />
       <Header as='h4'>Tags</Header>
       <ul>
         {tags.map((tag, idx) => {

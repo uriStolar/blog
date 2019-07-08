@@ -1,12 +1,10 @@
 ---
 path: /notas-algoritmos-hackerrank
 date: 2019-07-01
-title: Notas de algoritmos vistos en HackerRank
+title: Notas sobre algoritmos de HackerRank
 tags: ['algoritmos', 'hackerrank', 'javascript']
-excerpt: Resumen sobre los puntos más importantes referentes a los algoritmos vistos en HackerRank
+excerpt: Resumen sobre los puntos más importantes referentes a los algoritmos vistos en HackerRank. Se irán agregando más a esta publicación conforme vaya resolviendo ejercicios en la página mencionada.
 ---
-# Notas de algoritmos vistos en HackerRank 📚
-
 ## Problem Solving - Warmup 🔥
 
 ### Plus Minus
