@@ -17,9 +17,7 @@ const Template = ({ data, pageContext }) => {
       <Header as='h1'>{title}</Header>
       <Segment basic>
         <p>Publicado el {date}</p>
-        <p>
-          {excerpt}
-        </p>
+        <p>{excerpt}</p>
       </Segment>
       <div
         className='blogpost markdown-body'
@@ -37,10 +35,7 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
-        date(
-          formatString: "LL"
-          locale: "es-MX"
-        )
+        date(formatString: "LL", locale: "es-MX")
       }
     }
   }

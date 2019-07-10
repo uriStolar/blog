@@ -8,7 +8,7 @@ const SiteNavFooter = props => {
       <Divider />
       <List bulleted horizontal>
         <List.Item>
-          <Link to='/'>Home</Link>
+          <Link to="/">Home</Link>
         </List.Item>
         {props.prev && (
           <List.Item>

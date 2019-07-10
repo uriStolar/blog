@@ -1,9 +1,9 @@
 ---
-path: /notas-algoritmos-hackerrank
+path: /ejercicios-algoritmos
 date: 2019-07-01
-title: Notas sobre algoritmos de HackerRank
-tags: ['algoritmos', 'hackerrank', 'javascript']
-excerpt: Resumen sobre los puntos más importantes referentes a los algoritmos vistos en HackerRank. Se irán agregando más a esta publicación conforme vaya resolviendo ejercicios en la página mencionada.
+title: Ejercicios de Algoritmos y Estructuras de Datos
+tags: ['algoritmos', 'javascript', 'hackerrank']
+excerpt: Notas sobre ejercicios de algoritmos y estructuras de datos vistos en HackerRank y otras fuentes. Se irán agregando más a esta publicación conforme vaya resolviendo ejercicios.
 ---
 ## Problem Solving - Warmup 🔥
 
@@ -158,7 +158,7 @@ function timeConversion(s) {
 >Sam es un profesor de esa universidad y le gusta redondear la calificación de sus estudiantes de acuerdo a las siguientes reglas:
 >
 >- Si la diferencia entre la calificación y el siguiente múltiplo de 5 es menor a 3, redondear hacia arriba la calificación hasta el siguiente múltiplo de 5
->- Si la calificaci'on es menor a 38, no se redondea y el resultado será reprobatorio
+>- Si la calificación es menor a 38, no se redondea y el resultado será reprobatorio
 >
 > Por ejemplo una calificación de 84 se redondea a 85 pero una de 29 no.
 
@@ -183,3 +183,39 @@ function gradingStudents(grades) {
 - Se procede a calcular el siguiente número divisible entre 5, dividiendo el elemento entre 5 y redondeando al siguiente entero más grande usando la función [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), y posteriormente multiplicando por 5
 - Con el siguiente número divisible entre 5 comparamos si la diferencia entre éste y el elemento es menor a 3, si lo es entonces insertamos el siguiente número divisible entre 5 al arreglo de resultados
 - En caso contrario que la diferencia entre el siguiente divisible entre 5 y el elemento sea mayor a 5, se inserta el elemento en el arreglo de resultados y al finalizar las iteraciones se retorna el arreglo
+
+### Reverse String
+
+>Dada una cadena, retornar una cadena de caracteres en orden inverso a la original.
+
+Se implementaron tres soluciones en JavaScript. La primera es: 
+```javascript
+function reverse (str) {
+  return [...str].reverse().join('')
+}
+```
+- Se utiliza el [operador spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) para generar un arreglo con los caracteres de la cadena `str`
+- Utilizamos el método [Array.prototype.reverse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) para invertir el orden del arreglo (**Nota:** esto puede considerarse "trampa" o una solución muy sencilla por lo que se genera otra propuesta de solución)
+- Finalmente aplicamos el método [Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) para crear una nueva cadena concatenando cada caracter con el separador de "caracter vacío" `''`
+
+La segunda propuesta de solución es la siguiente:
+```javascript
+function reverse (str) {
+  let reversed = ''
+  for (let character of str) {
+      reversed = character + reversed
+  }
+  return reversed
+}
+```
+- Para esta solución se declara la cadena vacía `reversed` donde almacenaremos el resultado
+- Usando un bucle [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) iteramos sobre los caracteres de la cadena `str` y almacenamos el caracter actual en la variable `reversed` para después concatenarle el resto de la misma variable
+
+La tercer propuesta de solución es la siguiente:
+```javascript
+function reverse (str) {
+  return [...str].reduce((prev, current) => current + prev)
+}
+```
+- Nuevamente utilizamos el operador spread para generar un arreglo con los caracteres de `str`
+- Utilizamos la función [Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) para generar un valor único con base en el arreglo anterior, usando como reducer una [Arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) en la que retornamos la concatenación del valor actual con el valor anterior del arreglo

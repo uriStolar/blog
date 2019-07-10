@@ -7,9 +7,9 @@ const SingleTagTemplate = ({ data, pageContext }) => {
   const { posts, tagName } = pageContext
 
   return (
-    <Container text textAlign='justified'>
+    <Container text textAlign="justified">
       <br />
-      <Header as='h4'>Posts about {tagName}</Header>
+      <Header as="h4">Posts about {tagName}</Header>
       <div>
         <ul>
           {posts.map((post, idx) => {

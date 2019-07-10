@@ -6,12 +6,12 @@ import './../styles/index.css'
 const Layout = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
-    <Container text textAlign='center'>
+    <Container text textAlign="center">
       <br />
       <SiteHeader />
       <Divider horizontal>
-        <Header as='h4'>
-          <Icon name='file alternate' />
+        <Header as="h4">
+          <Icon name="file alternate" />
           Posts
         </Header>
       </Divider>
@@ -24,7 +24,7 @@ const Layout = ({ data }) => {
         )
       })}
       <br />
-      <Link to='/tags'>Browse posts by tags</Link>
+      <Link to="/tags">Browse posts by tags</Link>
     </Container>
   )
 }
