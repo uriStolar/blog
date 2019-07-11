@@ -1,18 +1,20 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Container, Divider, Icon, Header } from 'semantic-ui-react'
+import { Container, Divider, Header } from 'semantic-ui-react'
 import SiteHeader from '../components/SiteHeader'
 import './../styles/index.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
 const Layout = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
-    <Container text textAlign="center">
+    <Container text textAlign='center'>
       <br />
       <SiteHeader />
       <Divider horizontal>
-        <Header as="h4">
-          <Icon name="file alternate" />
-          Posts
+        <Header as='h4'>
+          <FontAwesomeIcon icon={faStickyNote} size='lg' />
+          &nbsp;Notes
         </Header>
       </Divider>
       {edges.map(edge => {
@@ -24,7 +26,7 @@ const Layout = ({ data }) => {
         )
       })}
       <br />
-      <Link to="/tags">Browse posts by tags</Link>
+      <Link to='/tags'>Browse notes by tags</Link>
     </Container>
   )
 }

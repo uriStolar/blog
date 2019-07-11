@@ -7,7 +7,7 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Uri Stolar\'s Blog',
+    title: 'Uri\'s Notepad',
     description: 'Half a page of scribbled lines'
   },
   plugins: [`gatsby-transformer-remark`,
