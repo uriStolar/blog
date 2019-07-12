@@ -4,6 +4,7 @@ date: 2019-07-08
 title: Node Debugger
 tags: ['node', 'debugger', 'javascript', 'REPL']
 excerpt: Cómo utilizar el debugger integrado de NodeJS (no, no es el console.log())
+image: ./bug.jpg
 ---
 ## Depurando Node 🚫🐞
 

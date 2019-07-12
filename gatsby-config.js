@@ -18,6 +18,8 @@ module.exports = {
         path: `${__dirname}/src/pages`
       }
     },
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`
   ]
 }

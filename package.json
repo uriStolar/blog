@@ -18,8 +18,10 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "gatsby": "^2.5.0",
     "gatsby-plugin-sass": "^2.1.1",
+    "gatsby-plugin-sharp": "^2.2.4",
     "gatsby-source-filesystem": "^2.0.36",
     "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-sharp": "^2.2.2",
     "github-markdown-css": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

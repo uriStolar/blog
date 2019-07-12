@@ -2,33 +2,39 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import SiteHeader from '../components/SiteHeader'
 import './../sass/styles.scss'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
 
 const Layout = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
     <section className='section has-text-centered'>
-      <div className='container is-desktop'>
+      <div className='container'>
         <SiteHeader className='is-size-1' />
         {edges.map(edge => {
           const { frontmatter } = edge.node
           return (
-            <div key={frontmatter.path} className='card'>
-              <div className='card-image'>
-                <figure className='image is-4by3'>
-                  <img src='https://bulma.io/images/placeholders/640x480.png' alt='Placeholder' />
-                </figure>
-              </div>
-              <div className='card-content'>
-                <Link to={frontmatter.path}>
-                  <p className='title'>{frontmatter.title}</p>
-                </Link>
-                <div className='subtitle'>
-                  {frontmatter.excerpt}
+            <div key={frontmatter.path}>
+              <div className='card'>
+                <div className='card-content'>
+                  <Link to={frontmatter.path}>
+                    <div className='card-image'>
+                      <figure className='image is-4by3'>
+                        <img
+                          src={frontmatter.image.childImageSharp.sizes.src}
+                          srcSet={frontmatter.image.childImageSharp.sizes.srcSet}
+                          alt={`Pic for ${frontmatter.title}`} />
+                      </figure>
+                    </div>
+                    <br />
+                    <p className='title'>{frontmatter.title}</p>
+                  </Link>
+                  <div className='subtitle'>
+                    {frontmatter.excerpt}
+                  </div>
                 </div>
               </div>
+              <br />
             </div>
+
           )
         })}
       </div>
@@ -50,6 +56,13 @@ export const query = graphql`
             excerpt
             path
             date
+            image {
+              childImageSharp {
+                sizes(maxWidth: 720, quality: 85) {
+                  ...GatsbyImageSharpSizes_noBase64
+                }
+              }
+            }
           }
         }
       }

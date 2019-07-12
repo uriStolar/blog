@@ -35,6 +35,13 @@ export const query = graphql`
         title
         excerpt
         date(formatString: "LL", locale: "es-MX")
+        image {
+          childImageSharp {
+            sizes(maxWidth: 720, quality: 85) {
+              ...GatsbyImageSharpSizes_noBase64
+            }
+          }
+        }
       }
     }
   }
