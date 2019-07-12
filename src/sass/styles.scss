@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif|Roboto+Slab&display=swap');
 
 $footer-padding: 1rem 1rem 1rem;
+$navbar-height: 4rem;
 
 @import './../../node_modules/bulma/bulma.sass';
 
@@ -12,4 +13,26 @@ body {
 .card {
   max-width: 720px;
   margin: auto;
+}
+
+.blogCard {
+  border: none;
+  box-shadow: none;
+}
+
+::selection {
+  background: rgb(94, 49, 220);
+  color: white;
+}
+
+::moz-selection {
+  background: rgb(94, 49, 220);
+  color: white;
+}
+
+.header-uri {
+  color: white; 
+  background: linear-gradient(-213deg, rgb(94, 49, 220) 0%, rgb(49, 85, 220) 100%)
+  right center / contain no-repeat,
+  left center rgb(49, 85, 220);
 }

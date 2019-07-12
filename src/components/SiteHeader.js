@@ -4,11 +4,22 @@ import { StaticQuery, graphql } from 'gatsby'
 const TitleAndDescription = ({ data }) => {
   const { title, description } = data.site.siteMetadata
   return (
-    <div className=''>
-      <h1 className='title'>{title}</h1>
-      <p className='subtitle'>{description}</p>
-      <br />
-    </div>
+    <nav className='navbar' role='navigation'>
+      <div className='navbar-brand'>
+        <a href='https://uristolar.com'>
+          <figure className='image is-48x48'>
+            <img src='https://uristolar.com/img/ush-sml-pxl.png' className=''
+              alt='Uri Stolar' />
+          </figure>
+        </a>
+      </div>
+      <a href='https://uristolar.com' className='navbar-item'>
+        <span className='title'>{title}</span>
+      </a>
+      <div className='navbar-end'>
+        <span className='navbar-item subtitle'>{description}</span>
+      </div>
+    </nav>
   )
 }
 

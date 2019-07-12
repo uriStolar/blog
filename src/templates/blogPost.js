@@ -6,24 +6,38 @@ import 'github-markdown-css'
 const Template = ({ data, pageContext }) => {
   const { markdownRemark } = data
   const { next, prev } = pageContext
-  const { title, excerpt, date } = markdownRemark.frontmatter
+  const { title, excerpt, date, image } = markdownRemark.frontmatter
   const { html } = markdownRemark
 
   return (
-    <section className='section'>
-      <div className='container'>
-        <p className='title'>{title}</p>
-        <div className='box'>
-          <p className='subtitle'>{excerpt}</p>
-          <p className='is-size-6'>Publicado el {date}</p>
+    <div>
+      <section className='section'>
+        <div className='container'>
+          <div className='card blogCard'>
+            <div className='card-content'>
+              <p className='title has-text-centered'>{title}</p>
+              <p className='is-size-6 has-text-centered'>Publicado el {date}</p>
+              <br />
+              <p className='subtitle'>{excerpt}</p>
+              <div className='card-image'>
+                <figure className='image is-4by3'>
+                  <img
+                    src={image.childImageSharp.sizes.src}
+                    srcSet={image.childImageSharp.sizes.srcSet}
+                    alt={`Pic for ${title}`} />
+                </figure>
+              </div>
+            </div>
+            <div
+              className='markdown-body'
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          </div>
+
         </div>
-        <div
-          className='container markdown-body'
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <SiteNavFooter className='section' prev={prev} next={next} />
-      </div>
-    </section>
+      </section>
+      <SiteNavFooter className='section' prev={prev} next={next} />
+    </div>
   )
 }
 
