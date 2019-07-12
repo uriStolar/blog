@@ -7,7 +7,7 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Uri\'s Notepad',
+    title: 'Notas de Uri',
     description: 'Half a page of scribbled lines'
   },
   plugins: [`gatsby-transformer-remark`,
@@ -17,6 +17,7 @@ module.exports = {
         name: `pages`,
         path: `${__dirname}/src/pages`
       }
-    }
+    },
+    `gatsby-plugin-sass`
   ]
 }

@@ -1,33 +1,42 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Container, Divider, Header } from 'semantic-ui-react'
 import SiteHeader from '../components/SiteHeader'
-import './../styles/index.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
+import './../sass/styles.scss'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
+
 const Layout = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
-    <Container text textAlign='center'>
-      <br />
-      <SiteHeader />
-      <Divider horizontal>
-        <Header as='h4'>
-          <FontAwesomeIcon icon={faStickyNote} size='lg' />
-          &nbsp;Notes
-        </Header>
-      </Divider>
-      {edges.map(edge => {
-        const { frontmatter } = edge.node
-        return (
-          <div key={frontmatter.path}>
-            <Link to={frontmatter.path}>{frontmatter.title}</Link>
-          </div>
-        )
-      })}
-      <br />
-      <Link to='/tags'>Browse notes by tags</Link>
-    </Container>
+    <section className='section has-text-centered'>
+      <div className='container is-desktop'>
+        <SiteHeader className='is-size-1' />
+        {edges.map(edge => {
+          const { frontmatter } = edge.node
+          return (
+            <div key={frontmatter.path} className='card'>
+              <div className='card-image'>
+                <figure className='image is-4by3'>
+                  <img src='https://bulma.io/images/placeholders/640x480.png' alt='Placeholder' />
+                </figure>
+              </div>
+              <div className='card-content'>
+                <Link to={frontmatter.path}>
+                  <p className='title'>{frontmatter.title}</p>
+                </Link>
+                <div className='subtitle'>
+                  {frontmatter.excerpt}
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <div className='navabar is-size-4'>
+        <br />
+        <Link to='/tags'>Buscar notas por sus tags</Link>
+      </div>
+    </section>
   )
 }
 
@@ -38,6 +47,7 @@ export const query = graphql`
         node {
           frontmatter {
             title
+            excerpt
             path
             date
           }

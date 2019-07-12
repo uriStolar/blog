@@ -1,8 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Container, Header, Segment } from 'semantic-ui-react'
 import SiteNavFooter from '../components/SiteNavFooter'
-import 'semantic-ui-css/semantic.min.css'
 import 'github-markdown-css'
 
 const Template = ({ data, pageContext }) => {
@@ -12,19 +10,20 @@ const Template = ({ data, pageContext }) => {
   const { html } = markdownRemark
 
   return (
-    <Container text textAlign='justified'>
-      <br />
-      <Header as='h1'>{title}</Header>
-      <Segment basic>
-        <p>Publicado el {date}</p>
-        <p>{excerpt}</p>
-      </Segment>
-      <div
-        className='blogpost markdown-body'
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-      <SiteNavFooter prev={prev} next={next} />
-    </Container>
+    <section className='section'>
+      <div className='container'>
+        <p className='title'>{title}</p>
+        <div className='box'>
+          <p className='subtitle'>{excerpt}</p>
+          <p className='is-size-6'>Publicado el {date}</p>
+        </div>
+        <div
+          className='container markdown-body'
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+        <SiteNavFooter className='section' prev={prev} next={next} />
+      </div>
+    </section>
   )
 }
 

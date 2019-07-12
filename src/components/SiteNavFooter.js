@@ -1,35 +1,36 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Divider, List } from 'semantic-ui-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const SiteNavFooter = props => {
   return (
-    <div>
-      <Divider />
-      <List bulleted horizontal>
-        <List.Item>
+    <footer className='footer'>
+      <ul className='container has-text-centered level'>
+        <li className='level-item'>
           <Link to='/'>
             <FontAwesomeIcon icon={faHome} size='lg' />
+            <span className='is-size-5'>&nbsp;Inicio</span>
           </Link>
-        </List.Item>
+        </li>
         {props.prev && (
-          <List.Item>
+          <li className='level-item'>
             <Link to={props.prev.frontmatter.path}>
               <FontAwesomeIcon icon={faArrowLeft} size='lg' />
+              <span className='is-size-5'>&nbsp;Anterior</span>
             </Link>
-          </List.Item>
+          </li>
         )}
         {props.next && (
-          <List.Item>
+          <li className='level-item'>
             <Link to={props.next.frontmatter.path}>
+              <span className='is-size-5'>Siguiente&nbsp;</span>
               <FontAwesomeIcon icon={faArrowRight} size='lg' />
             </Link>
-          </List.Item>
+          </li>
         )}
-      </List>
-    </div>
+      </ul>
+    </footer>
   )
 }
 
