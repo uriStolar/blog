@@ -2,10 +2,6 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import SiteHeader from '../components/SiteHeader'
 import './../sass/styles.scss'
-import ReactGA from 'react-ga'
-
-ReactGA.initialize('UA-142489920-1')
-ReactGA.pageview(window.location.pathname + window.location.search)
 
 const Layout = ({ data }) => {
   const { edges } = data.allMarkdownRemark
