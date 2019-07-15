@@ -29,7 +29,7 @@ const Template = ({ data, pageContext }) => {
               </div>
             </div>
             <div
-              className='markdown-body'
+              className='markdown-body content'
               dangerouslySetInnerHTML={{ __html: html }}
             />
           </div>

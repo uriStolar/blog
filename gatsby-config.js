@@ -10,7 +10,13 @@ module.exports = {
     title: 'Notas de Uri',
     description: 'Half a page of scribbled lines'
   },
-  plugins: [`gatsby-transformer-remark`,
+  plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-autolink-headers`]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
