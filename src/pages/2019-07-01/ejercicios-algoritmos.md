@@ -18,6 +18,7 @@ image: ./fractal.jpg
 - [Palíndromos](#palíndromos)
 - [Reverse Integer](#reverse-integer)
 - [Max Chars](#max-chars)
+- [Anagrams](#anagrams)
 
 ### Plus Minus
 
@@ -255,8 +256,8 @@ Para la siguiente solución me basé en el ejercicio anterior [Reverse String](#
 
 ```javascript
 function palindrome (str) {
-  let alReves = [...str].reduce((previo, actual) => actual + previo)
-  return alReves === str
+  let reversed = [...str].reduce((previo, actual) => actual + previo)
+  return reversed === str
 }
 ```
 - Se almacena en una variable la cadena invertida y se compara con la original, retornando el valor booleano resultado de la comparación
@@ -336,3 +337,55 @@ function maxChar (str) {
 - Iteramos con un [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) los caracteres de la cadena y creamos las propiedades (o llaves) de nuestro mapa de caracteres mediante un operador ternario: si ya existe la llave y se encuentra de nuevo la incrementamos en 1, de lo contrario la inicializamos en 1.
 - Posteriormente declaramos dos variables auxiliares `max` y `maxChar` y utilizamos un (for...in)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in] para iterar las llaves de nuestro mapa de caracteres, almacenando el valor máximo de cada llave y el caracter en nuestras variables auxiliares y finalmente devolveremos el caracter que haya tenido más ocurrencias.
 - **Nota:** podemos recordar el uso del for...of VS el uso del for...in recordando el [mnemónico](https://es.wikipedia.org/wiki/Mnem%C3%B3nico) `'o'f -> not 'o'bjects, 'i'n -> not 'i'terables`
+
+Basándonos en el algoritmo anterior para crear mapas de caracteres, podemos resolver el problema de determinar si dos palabras son anagramas.
+
+Antes de ver este ejercicio, vamos a refactorizar nuestra función para poder reutilizarla haciendo referencia a ella:
+
+```javascript
+const getCharMap = string1 => {
+  let map = {}
+  for (let char of string1) {
+    map[char] ? map[char]++ : map[char] = 1
+  }
+  return map
+}
+```
+
+Adicionalmente crearemos una función para "sanitizar" o reemplazar espacios y caracteres especiales en una cadena, con objeto de tener un resultado correcto al momento de comparar dos cadenas:
+
+```javascript
+const sanitizeString = dirtyStr => (
+  dirtyStr.toLowerCase().replace(/[^a-z\d]/g, '')
+)
+```
+- En esta función tomamos la cadena inicial, la convertimos a minúsculas y utilizamos el método replace con la [expresión regular](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Advanced_searching_with_flags) `/[^a-z\d]/g` para reemplazar las ocurrencias con el caracter vacío `''`
+
+Ya que tenemos este par de funciones procederemos a resolver el problema de determinar si dos palabras son anagramas.
+
+### Anagrams
+
+>Un anagrama es una palabra o frase que resulta de la transposición de letras de otra palabra o frase. Dicho de otra forma, una palabra es anagrama de otra si las dos tienen las mismas letras, con el mismo número de apariciones, pero en un orden diferente.
+>
+> Dadas dos cadenas, determinar si son anagramas retornando un valor booleano.
+
+Se propone la siguiente solucion en JavaScript:
+
+```javascript
+const areAnagrams = (string1, string2) => {
+  const string1Map = getCharMap(sanitizeString(string1))
+  const string2Map = getCharMap(sanitizeString(string2))
+
+  if (string1Map.length !== string2Map.length) return false
+  else {
+    for (let char in string1Map) {
+      if (string1Map[char] !== string2Map[char]) return false
+    }
+    return true
+  }
+}
+```
+
+- Tomamos las funciones anteriores `getCharMap` y `sanitizeString` para limpiar las cadenas de caracteres especiales y generar su mapa de caracteres
+- Comparamos la longitud de los mapas de caracteres; si tienen longitud diferente significa que no son anagramas
+- Iteramos sobre cada caracter del mapa de la cadena 1 y lo comparamos con el mapa de la cadena 2; si todas las llaves del mapa 1 tienen el mismo valor en el mapa 2 significa que sí son anagramas
