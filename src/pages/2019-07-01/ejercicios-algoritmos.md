@@ -19,6 +19,8 @@ image: ./fractal.jpg
 - [Reverse Integer](#reverse-integer)
 - [Max Chars](#max-chars)
 - [Anagrams](#anagrams)
+- [FizzBuzz](#fizzbuzz-múltiplos)
+- [Array Chunks](#array-chunks)
 
 ### Plus Minus
 
@@ -389,3 +391,79 @@ const areAnagrams = (string1, string2) => {
 - Tomamos las funciones anteriores `getCharMap` y `sanitizeString` para limpiar las cadenas de caracteres especiales y generar su mapa de caracteres
 - Comparamos la longitud de los mapas de caracteres; si tienen longitud diferente significa que no son anagramas
 - Iteramos sobre cada caracter del mapa de la cadena 1 y lo comparamos con el mapa de la cadena 2; si todas las llaves del mapa 1 tienen el mismo valor en el mapa 2 significa que sí son anagramas
+
+### FizzBuzz (múltiplos)
+>Escribir un programa que imrpima en pantalla los números de 1 a n. Para los números múltilplos de 3 en vez de imprimir el número imprimir la cadena `fizz`; para los números múltilplos de 5 en vez de imprimir el número imprimir la cadena `buzz`; finalmente para los números que sean múltiplos de ambos 3 y 5 imprimir la cadena `fizzbuzz`.
+
+La propuesta de solución en JavaScript es la siguiente:
+
+```javascript
+function fizzBuzz (n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) console.log('fizzbuzz')
+    else if (i % 3 === 0) console.log('fizz')
+    else if (i % 5 === 0) console.log('buzz')
+    else console.log(i)
+  }
+}
+```
+- Recorremos con un bucle for los números desde 1 hasta n y, utilizando el operador aritmético [modulo](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Remainder_()) (o residuo), verificamos:
+  - Si el número actual modulo 3 y modulo 5 son iguales a 0. imprimimos `fizzbuzz`
+  - Si el número actual modulo 3 es igual a 0. imprimimos `fizz`
+  - Si el número actual modulo 5 es igual a 0. imprimimos `buzz`
+  - De lo contrario imprimimos el número
+
+### Array Chunks
+>Dado un arreglo y un tamaño (chunk), dividir el arreglo en múltiples subarreglos donde cada subarreglo es de la longitud del tamaño (o chunk) especificado. Por ejemplo:
+> 
+>chunk([1, 2, 3, 4], 2) --> [[ 1, 2], [3, 4]]
+> 
+>chunk([1, 2, 3, 4, 5], 2) --> [[ 1, 2], [3, 4], [5]]
+> 
+>chunk([1, 2, 3, 4, 5, 6, 7, 8], 3) --> [[ 1, 2, 3], [4, 5, 6], [7, 8]]
+>
+>chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
+>
+>chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
+
+Se proponen dos soluciones en JavaScript; la primera es:
+
+```javascript
+function chunk (array, size) {
+  const chunked = []
+  for (let element of array) {
+    const last = chunked[chunked.length - 1]
+    if (!last || last.length === size) {
+      chunked.push([element])
+    } else {
+      last.push(element)
+    }
+  }
+  return chunked
+}
+```
+- Nuestra función recibirá como parámetros el arreglo original a dividir `array` y el tamaño deseado de los subarreglos (o chunks) `size`
+- Creamos un arreglo vacío `chunked` donde almacenaremos nuestros subarreglos.
+- Iteramos sobre el arreglo original y, por cada elemento:
+  - Creamos un arreglo `last` donde obtenendremos el último elemento del arreglo de subarreglos `chunked` y evaluamos:
+  - Si el último elemento no existe o si su tamaño es igual al tamaño deseado `size`:
+    - Insertamos a `chunked` un nuevo subarreglo con el elemento actual del arreglo original
+  - De lo contrario insertamos el elemento actual en el arreglo `last`
+
+Otra solución basada en el uso del método [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) es:
+```javascript
+const chunk = (array, size) => {
+  const chunked = []
+  let index = 0
+  while (index < array.length) {
+    chunked.push(array.slice(index, size + index))
+    index += size
+  }
+  return chunked
+}
+```
+- Creamos un arreglo vacío `chunked` donde almacenaremos nuestros subarreglos.
+- Creamos una variable `index` inicializada en 0
+- Mientras `index` sea menor a la longitud del arreglo original:
+  - Insertaremos en `chunked` un subarreglo del original de longitud `size`
+  - Sumaremos `size` a `index`, controlando así la porción del subarreglo a insertar y el bucle while
