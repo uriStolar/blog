@@ -14,6 +14,8 @@ image: ./fractal.jpg
 - [Birthday Cake Candles](#birthday-cake-candles)
 - [Time Conversion](#time-conversion)
 - [Grading Students](#grading-students)
+- [Sock Merchant](#sock-merchant)
+- [Counting Valleys](#counting-valleys)
 - [Reverse String](#reverse-string)
 - [Palíndromos](#palíndromos)
 - [Reverse Integer](#reverse-integer)
@@ -196,6 +198,79 @@ function gradingStudents(grades) {
 - Se procede a calcular el siguiente número divisible entre 5, dividiendo el elemento entre 5 y redondeando al siguiente entero más grande usando la función [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), y posteriormente multiplicando por 5
 - Con el siguiente número divisible entre 5 comparamos si la diferencia entre éste y el elemento es menor a 3, si lo es entonces insertamos el siguiente número divisible entre 5 al arreglo de resultados
 - En caso contrario que la diferencia entre el siguiente divisible entre 5 y el elemento sea mayor a 5, se inserta el elemento en el arreglo de resultados y al finalizar las iteraciones se retorna el arreglo
+
+### Sock Merchant
+> Un vendedor de calcetines tiene una pila de ellos que debe ordenar en pares de acuerdo a su color. Dado un arreglo de enteros que representa el color de cada calcetín, determinar cuántos pares de calcetines con el mismo color existen.
+>
+>Por ejemplo, hay `n = 7` calcetines con colores `ar = [1, 2, 3, 2, 1, 3, 2]`. Existe un par de color `1` y otro de color `2`. También hay tres calcetines sin par, uno de cada color. El número de pares es `2`.
+
+Se propone la siguiente solución:
+
+```javascript
+function sockMerchant(n, ar) {
+    let sockMap = {}
+    let result = 0
+    for (let sock of ar) {
+        sockMap[sock] ? sockMap[sock]++ : sockMap[sock] = 1
+    }
+    for (let sock in sockMap) {
+        if (sockMap[sock] > 1) {
+            result = result + Math.floor(sockMap[sock] / 2)
+        }
+    }
+    return result
+}
+```
+- Declaramos un objeto vacío `sockMap` donde crearemos un mapa de cada color de calcetines.
+- Declaramos una variable donde almacenaremos el resultado y la inicializaremos en 0
+- Crearemos el mapa de colores de calcetines iterando el arreglo. Si la llave del color en cuestión ya existe, incrementaremos el número de sus ocurrencias en uno, de lo contrario crearemos la llave y la inicializaremos con el valor 1.
+- Posteriormente iteraremos nuestro mapa de colores de calcetines, y:
+  - Si el valor del color es mayor a 1:
+    - Dividimos el valor del color entre dos y redondeamos hacia abajo el resultado usando [Math.floor()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor) y este valor se lo sumamos a nuestra variable `result`
+
+### Counting Valleys
+> Un montañista toma nota de la topografía en sus salidas. Durante su última salida recorrió exactamente `n` pasos. Por cada paso que recorrió anotó si era un paso hacia arriba con `U` o si era un paso hacia abajo con `D`. Las salidas del montañista siempre inician y terminan a nivel del mar y cada paso hacia arriba o hacia abajo representa un cambio de unidad de `1` en la altitud.
+>
+>- Una montaña es una secuencia de pasos consecutivos por arriba del nivel del mar, iniciando con un paso arriba del nivel del mar y terminando con un paso abajo, a nivel del mar.
+>
+>- De forma análoga, un valle es una secuencia de pasos consecutivos por debajo del nivel del mar, iniciando con un paso debajo del nivel del mar y terminando con un paso arriba, a nivel del mar.
+>
+>Dada una secuencia de pasos hacia arriba y hacia abajo de una de sus salidas, determinar el número de valles que recorrió.
+>
+>Por ejemplo, si los pasos son `s = [DDUUUUDD]`, primero entra a un valle a `2` unidades de profundidad. Después escala una montaña con `2` unidades de altura y finalmente regresa a nivel del mar y finaliza su trayecto.
+>
+>Explicación gráfica:
+>Si representamos el nivel del mar con `_`, un paso hacia arriba con `/` y un paso hacia abajo con `\`, el trayecto del montañista puede representarse como:
+
+```
+_/\      _
+   \    /
+    \/\/
+```
+>En esta salida, el montañista entró y salió de `1` valle
+
+
+Se propone la siguiente solución:
+
+```javascript
+function countingValleys(n, s) {
+  const steps = [...s]
+  let level = 0
+  let valleys = 0
+  for (let step of steps) {
+      if (step === 'D') level--
+      else if (step === 'U') {
+          level++
+          if (level === 0) valleys++
+      }
+  }
+  return valleys
+}
+```
+- Declaramos la constante `steps` y, dado que el formato de los pasos `s` es una cadena, utilizamos el operador spread para convertirlo en un arreglo. También declaramos las variables `level` y `valleys` para contabilizar el nivel de altitud y el número de valles encontrados.
+- Recorremos nuestro arreglo de pasos y:
+  - Si el paso es hacia abajo `D`, decrementamos el nivel una unidad
+  - Si el paso es hacia arriba `U` incrementamos el nivel una unidad y verificamos si el nivel es 0, esto significa que le montañista ha salido del valle, por lo que incrementamos el contador `valleys`
 
 ### Reverse String
 
