@@ -23,6 +23,7 @@ image: ./fractal.jpg
 - [Anagrams](#anagrams)
 - [FizzBuzz](#fizzbuzz-múltiplos)
 - [Array Chunks](#array-chunks)
+- [Capitalize Words](#capitalize-words)
 
 ### Plus Minus
 
@@ -412,7 +413,7 @@ function maxChar (str) {
 ```
 - Creamos el objeto `charMap` que utilizaremos como mapa de caracteres para almacenar las ocurrencias de un mismo caracter dentro de la cadena a analizar.
 - Iteramos con un [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) los caracteres de la cadena y creamos las propiedades (o llaves) de nuestro mapa de caracteres mediante un operador ternario: si ya existe la llave y se encuentra de nuevo la incrementamos en 1, de lo contrario la inicializamos en 1.
-- Posteriormente declaramos dos variables auxiliares `max` y `maxChar` y utilizamos un (for...in)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in] para iterar las llaves de nuestro mapa de caracteres, almacenando el valor máximo de cada llave y el caracter en nuestras variables auxiliares y finalmente devolveremos el caracter que haya tenido más ocurrencias.
+- Posteriormente declaramos dos variables auxiliares `max` y `maxChar` y utilizamos un [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) para iterar las llaves de nuestro mapa de caracteres, almacenando el valor máximo de cada llave y el caracter en nuestras variables auxiliares y finalmente devolveremos el caracter que haya tenido más ocurrencias.
 - **Nota:** podemos recordar el uso del for...of VS el uso del for...in recordando el [mnemónico](https://es.wikipedia.org/wiki/Mnem%C3%B3nico) `'o'f -> not 'o'bjects, 'i'n -> not 'i'terables`
 
 Basándonos en el algoritmo anterior para crear mapas de caracteres, podemos resolver el problema de determinar si dos palabras son anagramas.
@@ -466,6 +467,20 @@ const areAnagrams = (string1, string2) => {
 - Tomamos las funciones anteriores `getCharMap` y `sanitizeString` para limpiar las cadenas de caracteres especiales y generar su mapa de caracteres
 - Comparamos la longitud de los mapas de caracteres; si tienen longitud diferente significa que no son anagramas
 - Iteramos sobre cada caracter del mapa de la cadena 1 y lo comparamos con el mapa de la cadena 2; si todas las llaves del mapa 1 tienen el mismo valor en el mapa 2 significa que sí son anagramas
+
+Otra propuesta de solución en la que no ocupamos mapa de caracteres (pero sí nuestra función para limpiar cadenas) es:
+
+```javascript
+const anagrams = (stringA, stringB) => {
+  const cleanA = [...sanitizeString(stringA)].sort().join()
+  const cleanB = [...sanitizeString(stringB)].sort().join()
+  if (cleanA === cleanB) return true
+  else return false
+}
+```
+- Esta solución radica en el uso del método [Array.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) el cual, por defecto, ordena un arreglo convirtiéndolo a string y de acuerdo a los valores de su código UTF-16 (lo cual resulta en orden alfabético).
+- Creamos una constante por cada cadena, en ella utilizamos nuestra función `sanitizeString()` para limpiar nuestra cadena de caracteres especiales, en conjunto con el operador spread para convertir el resultado a arreglo; posteriormente usamos el método `sort()` para ordenar alfabéticamente el arreglo y posteriormente el método `join()` para convertir el arreglo a cadena.
+- Finalmente comparamos ambas cadenas, si son iguales significa que sí son anagramas.
 
 ### FizzBuzz (múltiplos)
 >Escribir un programa que imrpima en pantalla los números de 1 a n. Para los números múltilplos de 3 en vez de imprimir el número imprimir la cadena `fizz`; para los números múltilplos de 5 en vez de imprimir el número imprimir la cadena `buzz`; finalmente para los números que sean múltiplos de ambos 3 y 5 imprimir la cadena `fizzbuzz`.
@@ -542,3 +557,54 @@ const chunk = (array, size) => {
 - Mientras `index` sea menor a la longitud del arreglo original:
   - Insertaremos en `chunked` un subarreglo del original de longitud `size`
   - Sumaremos `size` a `index`, controlando así la porción del subarreglo a insertar y el bucle while
+
+### Capitalize Words
+
+> Escribir una función que acepte una cadena. La función deberá convertir a mayúsculas la primer letra de cada palabra de dicha cadena y después regresar la cadena con las respectivas mayúsculas. Por ejemploL:
+>
+>capitalize('a short sentence') --> 'A Short Sentence'
+>
+>capitalize('a lazy fox') --> 'A Lazy Fox'
+>
+>capitalize('look, it is working!') --> 'Look, It Is Working!'
+
+La primer solución que obtuve fue:
+
+```javascript
+function capitalize (str) {
+  let result = str[0].toUpperCase()
+  let rest = str.slice(1)
+  let space = rest.indexOf(' ')
+  while (space > -1) {
+    result += rest[space + 1].toUpperCase()
+    rest = rest.slice(space + 1)
+    space = rest.indexOf(' ')
+  }
+  return result + rest
+}
+```
+- Declaramos una variable `result` en la que almacenaremos el resultado y la inicializaamos con el primer caracter de la cadena convertido a mayúscula usando el método [toUpperCase](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+- Posteriormente declaramos una variable donde almacenaremos el resto de la cadena usando la función slice
+- Declaramos otra variable donde almacenaremos el índice de donde se encuentre el caracter espacio `' '` dentro del resto de la cadena
+- Analizamos el resto de la cadena y mientras siga existiendo un caractere espacio:
+  - Convertimos el caracter siguiente del espacio en mayúscula y lo concatenamos a `result`
+  - Almacenamos el resto de la cadena un caracter después de donde encontramos el espacio y hasta el final
+  - Buscamos en el nuevo resto por el caracter espacio
+- Cuando ya no encontremos un caracter espacio, concatenamos nuestro resultado con el resto
+
+Otra solución más legible es:
+
+```javascript
+const capitalize = str => {
+  const words = []
+  for (let word of str.split(' ')) {
+    words.push(word[0].toUpperCase() + word.slice(1))
+  }
+  return words.join(' ')
+}
+```
+- Declaramos un arreglo vacío `words` donde almacenaremos las palabras encontradas
+- Separamos la cadena original por cada caracter espacio `' '` obteniendo así cada palabra
+- Iteramos sobre las palabras encontradas y:
+  - Agregamos a nuestro arreglo el primer caracter de la palabra convertido a mayúsculas y el resto de la palabra
+- Finalmente convertimos nuestro arreglo de palabras en una cadena uniéndolo por el caracter espacio
