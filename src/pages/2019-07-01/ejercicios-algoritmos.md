@@ -10,6 +10,9 @@ image: ./fractal.jpg
 
 - [Plus Minus](#plus-minus)
 - [Staircase](#staircase)
+- [Steps](#steps)
+- [Pyramid](#pyramid)
+- [Contar Vocales](#contar-vocales)
 - [Mini Max Sum](#mini-max-sum)
 - [Birthday Cake Candles](#birthday-cake-candles)
 - [Time Conversion](#time-conversion)
@@ -24,6 +27,7 @@ image: ./fractal.jpg
 - [FizzBuzz](#fizzbuzz-múltiplos)
 - [Array Chunks](#array-chunks)
 - [Capitalize Words](#capitalize-words)
+- [Consejos para escribir funciones recursivas](#consejos-para-escribir-funciones-recursivas)
 
 ### Plus Minus
 
@@ -95,6 +99,244 @@ function main() {
     
 - Unimos los caracteres del arreglo en una cadena e imprimimos en consola
 
+### Steps
+
+> Escribir una función que acepte un entero positivo `n`. La función debe imprimir en consola una media pirámide con N niveles usando el caracter `#`. Asegurarse que la forma tenga espacios a la derecha del caracter mencionado.
+>
+> Por ejemplo:
+```
+   steps(2)
+       '# '
+       '##'
+   steps(3)
+       '#  '
+       '## '
+       '###'
+   steps(4)
+       '#   '
+       '##  '
+       '### '
+       '####'
+```
+La primer solución en JavaScript es la siguiente:
+- Declarar un contador para el caracter `#` inicializado en 1
+- Declarar un contador para el espacio inicializado en `n - 1`
+- Iterar N veces y en cada iteración declarar la cadena resultado a imprimir correspondiente al nivel
+  - Concatenar al resultado el número de `#` y de espacios correspondientes a su respectivo contador
+  - Imprimir la cadena resultado correspondiente al nivel
+  - Incrementar contador de `#`
+  - Decrementar contador de espacios
+
+```javascript
+function steps (n) {
+  let pounds = 1
+  let spaces = n - 1
+  for (let x = 0; x < n; x++) {
+    let result = ''
+    for (let y = 0; y < pounds; y++) {
+      result += '#'
+    }
+    for (let z = 0; z < spaces; z++) {
+      result += ' '
+    }
+    console.log(result)
+    pounds++
+    spaces--
+  }
+}
+```
+
+Otra solución más eficiente:
+
+- Visualizar la media pirámide a imprimir como una matriz bidimensional con filas y columnas
+- Declarar dos variables `row` y `column` inicializadas en 0, para controlar el valor de las filas y las columnas
+- Iterar las filas n veces y en cada iteración
+  - Declarar una variable donde almacenaremos el resultado de la cadena a imprimir
+  - Iterar las columnas n veces y:
+    - Si el valor de la columna es menor o igual al de la fila, concatenar un `#` al resultado, de lo contrario concatenar un espacio
+  - Imprimir el resultado del nivel correspondiente
+```javascript
+const steps = n => {
+  let row = 0
+  let col = 0
+  for (row; row < n; row++) {
+    let result = ''
+    for (col; col < n; col++) {
+      if (col <= row) result += '#'
+      else result += ' '
+    }
+    console.log(result)
+  }
+}
+```
+
+Finalmente una solución recursiva tomando como base la representación matricial del problema a continuación.
+
+Tomando en cuenta estos [consejos para escribir funciones recursivas](#consejos-para-escribir-funciones-recursivas) procederemos a:
+
+1. Averiguar los datos mínimos para representar el problema:
+  - `n`, `row`, y `result`
+2. Establecer valores por defecto para los datos:
+  - `n` deberá ser introducido por el usuario, `row` siempre inicia en `0`, y `result` siempre en cadena vacía
+3. identificar el caso base:
+- Si la fila es igual a n, la matriz está terminada y el problema también
+4. Realizar trabajo y modificar los argumentos de la función recursiva:
+- Si la longitud de la cadena resultado es igual a n, estamos al final de la fila (procedemos a llamar a la función recursiva con la siguiente fila `n + 1`)
+- Si la longitud de la cadena resultado es menor o igual a la fila en la que estamos trabajando, concatenamos un `#` a la cadena resultado, de lo contrario concatenamos un espacio y seguimos trabajando en la fila actual
+
+```javascript
+const steps = (n, row = 0, result = '') => {
+  if (n === row) return
+  if (result.length === n) {
+    console.log(result)
+    return steps(n, row + 1)
+  }
+  if (result.length <= row) result += '#'
+  else result += ' '
+  steps(n, row, result)
+}
+```
+
+### Pyramid
+> Escribir una función que acepte como argumento un entero positivo `n`.
+> La función deberá imprimir en consola una forma piramidal con n niveles usando el caracter `#`. Asegurarse que la pirámide tenga espacios en ambos lados (izquierdo y derecho) del caracter mencionado.
+> Ejemplos:
+```
+pyramid(1)
+    '#'
+pyramid(2)
+    ' # '
+    '###'
+pyramid(3)
+    '  #  '
+    ' ### '
+    '#####'
+pyramid(4)
+    '   #   '
+    '  ###  '
+    ' ##### '
+    '#######'
+```
+
+La primer solución a la que llegué fue la siguiente:
+
+- Inicializamos el contador de pounds en 1
+- Inicializamos el contador de espacios en n - 1
+- Iteramos n veces
+- Por cada nivel imprimimos espacios + pounds + espacios
+- Decrementamos en 1 los espacios
+- Incrementamos en 2 los pounds
+
+```javascript
+function pyramid (n) {
+  let pounds = 1
+  let spaces = n - 1
+  for (let x = 0; x < n; x++) {
+    let level = ''
+    for (let s = 0; s < spaces; s++) {
+      level += ' '
+    }
+    for (let p = 0; p < pounds; p++) {
+      level += '#'
+    }
+    for (let s = 0; s < spaces; s++) {
+      level += ' '
+    }
+    console.log(level)
+    spaces = spaces - 1
+    pounds = pounds + 2
+  }
+}
+```
+
+Una solución más elegante, basada en una progresión aritmética para encontrar el n-ésimo número impar (2 * n - 1) :
+
+- Declaramos una función para calcular el n-ésimo número impar
+
+En nuestra función para generar la pirámide:
+- Iteramos n veces
+- Calculamos el número de hashes correspondiente al n-esimo número  impar del nivel en el que iteramos
+- Calculamos el número de espacios correspondiente al nésimo número impar del total de niveles, menos la longitud actual de hashes y lo dividimos entre dos (dado que una mitad va a ia izquierda de los hashes y otra a la deracha)
+- Imprimimos el nivel actual con los espacios, los hashes y nuevamente los espacios
+```javascript
+const nthNumber = n => 2 * n - 1
+
+const pyramid = n => {
+  for (let i = 1; i <= n; i++) {
+    let hashes = '#'.repeat(nthNumber(i))
+    let spaces = ' '.repeat((nthNumber(n) - hashes.length) / 2)
+    console.log(spaces + hashes + spaces)
+  }
+}
+```
+
+Una solución recursiva para el problema de la pirámide es:
+
+
+1. Averiguar los datos mínimos para representar el problema:
+  - `n`, `fila`, y `nivel`
+2. Establecer valores por defecto para los datos:
+  - `n` deberá ser introducido por el usuario, `fila` siempre inicia en `0`, y `nivel` siempre en cadena vacía
+3. identificar el caso base:
+- Si la fila es igual a n, la matriz está terminada y el problema también
+4. Realizar trabajo y modificar los argumentos de la función recursiva:
+- Si la longitud de la cadena nivel es igual al n-ésimo número impar de n, estamos al final de la fila. Procedemos a imprimir nivel y llamar a la función recursiva con la siguiente fila `fila + 1`
+- Calculamos el punto medio del n-ésimo número impar de n `(2 * n -1) / 2` redondeado hacia abajo a un entero
+- Si la longitud del nivel es mayor o igual al punto medio menos la fila Y menor o igual al punto medio mas la fila, concatenamos un `#` al nivel, de lo contrario concatenamos un espacio y seguimos trabajando en la fila actual, invocando la función recursiva con la fila actual.
+
+```javascript
+const pyramid = (n, fila = 0, nivel = '') => {
+  if (fila === n) return
+  if (nivel.length === (2 * n - 1)) {
+    console.log(nivel) 
+    return pyramid(n, fila + 1)
+  }
+  const mid = Math.floor((2 * n - 1) / 2)
+  if (nivel.length >= mid - fila && nivel.length <= mid + fila) nivel += '#'
+  else nivel += ' '
+  pyramid(n, fila, nivel)
+}
+```
+### Contar vocales
+
+> Escribir una función que acepte una cadena y retorne el número de vocales usadas en ella. Por ejemplo:
+>
+>
+>vowels('Hi There!') --> 3
+>
+>vowels('Why do you ask?') --> 4
+>
+>vowels('Why?') --> 0
+
+La primer solución es iterativa y consiste en:
+- Declarar un arreglo de vocales y una variable contador para sus ocurrencias, inicializado en 0
+- Iterar el arreglo de vocales y por cada vocal:
+  - Buscar en la cadena original convertida a minúsculas y si encontramos una vocal, incrementar el contador
+- Retornar el contador
+
+```javascript
+function vowels (str) {
+  const vowelArr = ['a', 'e', 'i', 'o', 'u']
+  let count = 0
+  for (let v of vowelArr) {
+    if (str.toLowerCase().indexOf(v) > -1) count ++
+  }
+  return count
+}
+```
+
+Otra solución, basada en el uso de una expresión regular:
+
+- Declaramos una variable, que, usando una expresión regular, encuentre las ocurrencias de vocales (mayúsculas y minúsculas) dentro de la cadena original
+- Contamos la longitud de la cadena con las ocurrencias de vocales encontradas y la retornamos
+  - En caso de que la cadena no exista porque no se encontraron ocurrencias de vocales, retornar 0
+
+```javascript
+const vowels = str => {
+  let vowelCount = str.match(/[aeiou]/ig)
+  return vowelCount ? vowelCount.length : 0
+}
+```
 
 ### Mini-Max Sum
 
@@ -608,3 +850,10 @@ const capitalize = str => {
 - Iteramos sobre las palabras encontradas y:
   - Agregamos a nuestro arreglo el primer caracter de la palabra convertido a mayúsculas y el resto de la palabra
 - Finalmente convertimos nuestro arreglo de palabras en una cadena uniéndolo por el caracter espacio
+
+### Consejos para escribir funciones recursivas
+
+1. Averiguar las mínimas piezas de información para representar el problema
+2. Establecer valores por defecto razonables para estas mínimas piezas de información
+3. Verificar el caso base. ¿Todavía hay trabajo por hacer? si no, retornar (de la función)
+4. Hacer algo de trabajo. Llamar a la función nuevamente, asegurándose de haber cambiado los argumentos de llamada de alguna forma
