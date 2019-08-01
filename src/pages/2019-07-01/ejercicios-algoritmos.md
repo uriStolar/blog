@@ -12,6 +12,7 @@ image: ./fractal.jpg
 - [Staircase](#staircase)
 - [Steps](#steps)
 - [Pyramid](#pyramid)
+- [Spiral Matrix](#spiral-matrix)
 - [Contar Vocales](#contar-vocales)
 - [Mini Max Sum](#mini-max-sum)
 - [Birthday Cake Candles](#birthday-cake-candles)
@@ -69,7 +70,7 @@ Considere una escalera de tamaño _n = 4_
 ```
 >Observe que la base y la altura son iguales a _n_, y que la imagen es dibujada utilizando caracteres `#` y espacios. La última línea no contiene ningún espacio. Deberá escribir una función que imprima una escalera de tamaño _n_.
 
-La solución en JavaScript es la siguiente:
+La primer solución a la que llegué fue la siguiente:
 
 ```javascript
 function main() {
@@ -98,6 +99,25 @@ function main() {
     - Decrementamos el número de espacios e incrementamos el número de hashes
     
 - Unimos los caracteres del arreglo en una cadena e imprimimos en consola
+
+Una solución más eficiente es:
+
+- Declarar una cadena vacía donde almacenaremos la escalera a imprimir
+- iteramos n veces y en cada iteración `i`
+  - Concatenamos a la cadena el caracter espacio repetido `n - i - 1`
+  - Concatenamos a la cadena el caracter `#` repetido `i + 1`
+  - Concatenamos a la cadena el caracter salto de línea `\n`
+- Imprimimos la escalera
+
+```javascript
+const staircase = n => {
+  let stair = ''
+  for (let i = 0; i < n; i++) {
+    stair += ' '.repeat(n - i - 1) + '#'.repeat(i + 1) + '\n'
+  }
+  console.log(stair)
+}
+```
 
 ### Steps
 
@@ -201,6 +221,7 @@ const steps = (n, row = 0, result = '') => {
 > Escribir una función que acepte como argumento un entero positivo `n`.
 > La función deberá imprimir en consola una forma piramidal con n niveles usando el caracter `#`. Asegurarse que la pirámide tenga espacios en ambos lados (izquierdo y derecho) del caracter mencionado.
 > Ejemplos:
+
 ```
 pyramid(1)
     '#'
@@ -258,6 +279,7 @@ En nuestra función para generar la pirámide:
 - Calculamos el número de hashes correspondiente al n-esimo número  impar del nivel en el que iteramos
 - Calculamos el número de espacios correspondiente al nésimo número impar del total de niveles, menos la longitud actual de hashes y lo dividimos entre dos (dado que una mitad va a ia izquierda de los hashes y otra a la deracha)
 - Imprimimos el nivel actual con los espacios, los hashes y nuevamente los espacios
+
 ```javascript
 const nthNumber = n => 2 * n - 1
 
@@ -297,6 +319,94 @@ const pyramid = (n, fila = 0, nivel = '') => {
   pyramid(n, fila, nivel)
 }
 ```
+### Spiral Matrix
+> Escribir una función que acepte un entero N y retorne una matriz espiral de N x N.
+>
+> Por ejemplo:
+```
+matrix(2)
+   [[1, 2],
+   [4, 3]]
+matrix(3)
+   [[1, 2, 3],
+   [8, 9, 4],
+   [7, 6, 5]]
+matrix(4)
+   [[1,   2,  3, 4],
+   [12, 13, 14, 5],
+   [11, 16, 15, 6],
+   [10,  9,  8, 7]]
+```
+
+Esta solución radica en establecer variables para las filas y columnas iniciales y finales e irlas moviendo para rellenar la matriz. Para una matriz de 3x3 visualizaremos la Columna Inicial (CI) y Fila Inicial (FI) con el índice 0, y la Columna Final (CF) y Fila Final (FF) con el índice 2 (para este caso particular de una matriz con n=3)
+
+```
+     CI=0     CF=2
+FI=0  [[1, 2, 3],
+       [8, 9, 4],
+FF=2   [7, 6, 5]]
+```
+El pseudocódigo es el siguiente:
+
+- Crear un arreglo de arreglos llamado `resultado`
+- Crear una variab le contador inicializada en 1
+- Mientras que `columnaInicial` sea menor o igual a `columnaFinal` Y `filaInicial` sea menor o igual a `finaFinal`:
+  - Iterar (i) desde `columnaInicial` hasta `columnaFinal`
+    - En `resultado[filaInicial][i]` asignar `contador`
+    - Incrementar `contador`
+  - Incrementar `filaInicial`
+  - Iterar (i) desde `filaInicial` hasta `filaFinal`
+    - En `resultado[i][columnaFinal]` asignar `contador`
+    - Incrementar `contador`
+  - Decrementar `columnaFinal`
+  - Iterar (i) desde `columnaFinal` hasta `columnaInicial`
+    - En `resultado[filaFinal][i]` asignar `contador`
+    - Incrementar `contador`
+  - Decrementar `finalFinal`
+  - Iterar (i) desde `filaFinal` a `filaInicial`
+    - En `resultado[i][columnaInicial]` asignar `contador`
+    - Incrementar `contador`
+  - Incrementar `columnaInicial`
+- Retornar resultado
+
+```javascript
+function matrix (n, columnaInicial = 0, filaInicial = 0, columnaFinal = n - 1, filaFinal = n - 1) {
+  const resultado = []
+  for (let i = 0; i < n; i++) {
+    resultado.push([])
+  }
+  let contador = 1
+
+  while (columnaInicial <= columnaFinal && filaInicial <= filaFinal) {
+    // Fila superior
+    for (let i = columnaInicial; i <= columnaFinal; i++) {
+      resultado[filaInicial][i] = contador
+      contador++
+    }
+    filaInicial++
+    // Columna derecha
+    for (let i = filaInicial; i <= filaFinal; i++) {
+      resultado[i][columnaFinal] = contador
+      contador++
+    }
+    columnaFinal--
+    // Fila inferior
+    for (let i = columnaFinal; i >= columnaInicial; i--) {
+      resultado[filaFinal][i] = contador
+      contador++
+    }
+    filaFinal--
+    // Columna izquierda
+    for (let i = filaFinal; i >= filaInicial; i--) {
+      resultado[i][columnaInicial] = contador
+      contador++
+    }
+    columnaInicial++
+  }
+  return resultado
+}
+```
+
 ### Contar vocales
 
 > Escribir una función que acepte una cadena y retorne el número de vocales usadas en ella. Por ejemplo:
