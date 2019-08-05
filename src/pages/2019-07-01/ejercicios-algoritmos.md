@@ -13,6 +13,7 @@ image: ./fractal.jpg
 - [Steps](#steps)
 - [Pyramid](#pyramid)
 - [Spiral Matrix](#spiral-matrix)
+- [Fibonacci](#fibonacci)
 - [Contar Vocales](#contar-vocales)
 - [Mini Max Sum](#mini-max-sum)
 - [Birthday Cake Candles](#birthday-cake-candles)
@@ -97,8 +98,9 @@ function main() {
     - Insertamos un caracter _hash_ en el arreglo de resultado tantas veces como total de hashes tengamos
     - Insertamos un caracter de salto de línea `\n` en todas excepto en la última repetición
     - Decrementamos el número de espacios e incrementamos el número de hashes
-    
 - Unimos los caracteres del arreglo en una cadena e imprimimos en consola
+
+Esta solución tiene una complejidad **O(N (A + B))**
 
 Una solución más eficiente es:
 
@@ -118,6 +120,7 @@ const staircase = n => {
   console.log(stair)
 }
 ```
+Esta solución tiene una complejidad **O(N)**
 
 ### Steps
 
@@ -165,6 +168,7 @@ function steps (n) {
   }
 }
 ```
+Esta solución tiene una complejidad **O(N (A + B))**
 
 Otra solución más eficiente:
 
@@ -175,10 +179,12 @@ Otra solución más eficiente:
   - Iterar las columnas n veces y:
     - Si el valor de la columna es menor o igual al de la fila, concatenar un `#` al resultado, de lo contrario concatenar un espacio
   - Imprimir el resultado del nivel correspondiente
+
 ```javascript
 const steps = n => {
   let row = 0
   let col = 0
+
   for (row; row < n; row++) {
     let result = ''
     for (col; col < n; col++) {
@@ -189,6 +195,7 @@ const steps = n => {
   }
 }
 ```
+Esta solución tiene una complejidad **O(N<sup>2</sup>)**
 
 Finalmente una solución recursiva tomando como base la representación matricial del problema a continuación.
 
@@ -269,6 +276,7 @@ function pyramid (n) {
   }
 }
 ```
+Esta solución tiene una complejidad **O(N (A + B))**
 
 Una solución más elegante, basada en una progresión aritmética para encontrar el n-ésimo número impar (2 * n - 1) :
 
@@ -291,6 +299,7 @@ const pyramid = n => {
   }
 }
 ```
+Esta solución tiene una complejidad **O(N)**
 
 Una solución recursiva para el problema de la pirámide es:
 
@@ -406,6 +415,54 @@ function matrix (n, columnaInicial = 0, filaInicial = 0, columnaFinal = n - 1, f
   return resultado
 }
 ```
+
+### Fibonacci
+
+> Imprimir el n-ésimo número de la serie de Fibonacci, la cual es una sucesión de números donde cada elemento es la suma de los dos anteriores. Por ejemplo, la secuencia
+>
+> [0, 1, 1, 2, 3, 4, 8, 13, 21, 34]
+>
+> son los primeros 10 elementos de la serie de Fibonacci. Para nuestra función, un ejemplo sería:
+>
+> fib(4) = 3
+
+La solución iterativa es la siguiente:
+
+- Si n es 0 ó 1, retornamos n
+- De lo contrario, declaramos dos variables `previo` y `actual`, inicializadas en 0 y 1 respectivamente.
+- Iteramos de 1 a n y en cada iteración:
+  - Calculamos `actual` sumando `actual` mas `previo`
+  - Calculamos `previo` restando `actual` menos `previo`
+- Al final de las iteraciones, retornamos `actual`
+
+```javascript
+function fib (n) {
+  if (n <= 1) return n
+  else {
+    let previo = 0
+    let actual = 1
+    for (let i = 1; i < n; i++) {
+      actual += previo
+      previo = actual - previo
+    }
+    return actual
+  }
+}
+```
+Esta solución tiene una complejidad de **O(N)**.
+
+Una solución recursiva es la siguiente:
+
+- Si `n` es menor a 2, retornamos n
+- De lo contrario retornamos la función fibonacci del número anterior sumando la función fibonacci de dos números anteriores
+
+```javascript
+function fib (n) {
+  if (n < 2) return n
+  return fib(n - 1) + fib(n - 2)
+}
+```
+Esta solución no es la más óptima, ya que radica en devanar o desenvolver la función hasta obtener las funciones fibonacci de los únicos dos valores que ya conocemos, 0 y 1. Tiene una complejidad de **O(2<sup>N</sup>)**.
 
 ### Contar vocales
 

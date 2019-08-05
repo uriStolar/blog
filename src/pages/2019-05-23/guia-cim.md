@@ -3,7 +3,7 @@ path: /guia-examen-cim
 date: 2019-05-23
 title: Guía para examen del CIM - AEM IPN
 tags: ['CIM', 'AEM', 'IPN', 'montañismo']
-excerpt: Resumen con los puntos más relevantes de las clases teóricas del CIM-A 2019 de la AEM-IPN.
+excerpt: Resumen con los puntos mas relevantes de las clases teóricas del CIM-A 2019 de la AEM-IPN.
 image: ./mtn.jpg
 ---
 ## Montañismo 🏔️
@@ -66,7 +66,7 @@ Minimizar el impacto en áreas naturales.
 - Rocallosas: Son 4800 Km. desde Canadá hasta el sur de EU
 - Himalayas: Comprende India, Bután, Myanmar, China, Pakistán y Afganistán
 
-## Montañas más altas (los 14 ochomiles) 🔝
+## Montañas mas altas (los 14 ochomiles) 🔝
 | No. | Nombre       | Altura        | Cordillera |   País         | 1er Ascenso |
 |---| :-------------:|:-----------:|:-----------:|:--------------:|:-----:|
 |1| Everest          | 8,848 | Himalaya    | China/Nepal    | 1953
@@ -86,7 +86,7 @@ Minimizar el impacto en áreas naturales.
 
 Carlos Carsolio es el único mexicano que ha hecho cima en los 14 ochomiles.
 
-## Montañas más altas por continente 🌎
+## Montañas mas altas por continente 🌎
 |  Continente   | Nombre       | Altura|  Cordillera  |      País        |
 |:--------------| :------------|:-----:|:------------:|:-----------------|
 |América (sur)  | Aconcagua    | 6,960 |  Andes       | Argentina        |
@@ -96,7 +96,7 @@ Carlos Carsolio es el único mexicano que ha hecho cima en los 14 ochomiles.
 |Oceanía        | Puncak Jaya  | 5,262 |  Sudirman    | Papua, Indonesia |
 |Antártida      | Vinson Massif| 4,892 |  Sentinel    | Antartida        |
 
-## Montañas más altas de México 🇲🇽
+## Montañas mas altas de México 🇲🇽
 | No. |    Nombre                  | Altura | Lugar         |
 |---| :---------------------------:|:-----:|:--------------:|
 |1| Pico de Orizaba (Citlaltépetl) | 5,702 | Puebla/Veracruz|
