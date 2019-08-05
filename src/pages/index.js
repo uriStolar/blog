@@ -17,6 +17,7 @@ const Layout = ({ data }) => {
                 <div className='card'>
                   <div className='card-content'>
                     <Link to={frontmatter.path}>
+                      <p className='title'>{frontmatter.title}</p>
                       <div className='card-image'>
                         <figure className='image is-4by3'>
                           <img
@@ -26,7 +27,6 @@ const Layout = ({ data }) => {
                         </figure>
                       </div>
                       <br />
-                      <p className='title'>{frontmatter.title}</p>
                     </Link>
                     <div className='subtitle'>
                       {frontmatter.excerpt}
