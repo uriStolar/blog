@@ -3,7 +3,7 @@ path: /memoization
 date: 2019-08-05
 title: Memoization
 tags: ['algoritmos', 'memoizacion', 'memoization']
-excerpt: ¿Qué es la memoization (memoización en español) y cómo nos puede ayurar a reducir el tiempo de ejecución de un algoritmo?
+excerpt: ¿Qué es la memoization (memoización en español) y cómo nos puede ayudar a reducir el tiempo de ejecución de un algoritmo?
 image: ./memo.png
 ---
 Partiendo del [problema de calcular el n-ésimo elemento de la serie de Fibonacci](https://notas.uristolar.com/ejercicios-algoritmos#fibonacci) podemos obtener la muy conocida solución recursiva:
