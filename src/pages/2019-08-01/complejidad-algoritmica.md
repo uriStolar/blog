@@ -59,6 +59,83 @@ for (int a: arr A) {
 }
 ```
 
+### Tiempo de ejecución logarítmico
+
+Tomaremos como ejemplo la búsqueda binaria. En la búsqueda binaria se busca un elemento `x` en un arreglo ordenado de N elementos. Primero se compara x al punto medio del arreglo. 
+- Si `x == medio`, entonces retornamos.
+- Si `x < medio`, buscamos en el lado izquierdo del arreglo
+- Si `x > medio`, buscamos en el lado derecho del arreglo
+
+```
+buscar 9 dentro de {1, 5, 8, 9, 11, 13, 15, 19, 21}
+  comparar 9 con 11 -> menor
+  buscar 9 dentro de {1, 5, 8, 9, 11}
+    comparar 9 con 8 -> mayor
+    buscar 9 dentro de {9, 11}
+      comparar 9 con 9
+      retornar
+```
+
+El tiempo de ejecución total radica en encontrar cuántos pasos nos toma el que N se convierta en 1 (dividiendo N entre 2 cada paso).
+
+```
+N = 16
+N = 8     /* divide entre 2 */
+N = 4     /* divide entre 2 */
+N = 2     /* divide entre 2 */
+N = 1     /* divide entre 2 */
+```
+
+Podríamos analizarlo en sentido inverso (yendo de 1 a 16 en vez de 16 a 1). ¿Cuántas veces podemos multiplicar 1 por 2 hasta obtener N?
+
+```
+N = 1
+N = 2     /* multiplica por 2 */
+N = 4     /* multiplica por 2 */
+N = 8     /* multiplica por 2 */
+N = 16    /* multiplica por 2 */
+```
+
+¿Qué valor tiene k en la expresión 2<sup>k</sup> = N? Esto es exactamente lo que expresa la función logaritmo.
+
+2<sup>4</sup> = 16 -> log<sub>2</sub> 16 = 4
+
+log<sub>2</sub>N = k -> 2<sup>k</sup> = N
+
+Cuando tengamos un problema en el que el número de elementos en el espacio del problema se reduce a la mitad cada vez, muy probablemente sea un tiempo de ejecución logarítmico **O(log N)**.
+
+Por esta misma razon la complejidad de encontrar un elemento en un árbol de búsqueda binaria es **O(log N)**. Por cada comparación buscamos del lado izquierdo o derecho del arreglo. La mitad de los nodos están en cada lado, por lo que cortamos el espacio del problema a la mitad en cada iteración.
+
+### Tiempo de ejecución recursivo
+
+Tomando como ejemplo esta función:
+
+```
+int f(int n) {
+  if (n <= 1) {
+    return 1;
+  }
+  return f(n - 1) + f(n - 1)
+}
+```
+
+Analizando el código para `f(4)`, llamaremos a `f(3)` dos veces y cada una de esas llamadas a `f(3)` llamará a `f(2)` hasta llegar a `f(1)`. ¿Cuántas llamadas a `f` se realizaron?
+
+Si lo imaginamos como un árbol, éste tendrá una profundidad `N`. Cada nodo (o llamada a `f`) tendrá dos hijos. Por lo que cada nivel tendrá el doble de llamadas que el anterior. El número de nodos en cada nivel es:
+
+|Nivel|Nodos|Tambièn expresado como...|O...|
+|:---:|:---:|-------------------------|-----------:|
+|0    |  1  |                         |2<sup>0</sup>|
+|1    |  2  | 2 * nivel previo = 2    |2<sup>1</sup>|
+|2    |  4  | 2 * nivel previo = 2 * 2<sup>1</sup> = 2<sup>2</sup>  |2<sup>2<sup>|
+|3    |  8  | 2 * nivel previo = 2 * 2<sup>2</sup> = 2<sup>3</sup>  |2<sup>3<sup>|
+|4    |  16 | 2 * nivel previo = 2 * 2<sup>3</sup> = 2<sup>4</sup>  |2<sup>4<sup>|
+
+Por consiguiente, habrá 2<sup>0</sup> + 2<sup>1</sup> + 2<sup>2</sup> + 2<sup>3</sup> + ... + 2<sup>N</sup> (lo que es 2<sup>N+1</sup> - 1) nodos.
+
+Este patrón indica que cuando tenemos una función recursiva que realiza múltiples llamadas, el tiempo de ejecución frecuentemente (mas no siempre) se podrá representar como **O(ramas<sup>profundidad</sup>)**, donde `ramas` es el número de veces cada llamada recursiva se ramifica. En este caso nos da un valor de O(2<sup>N</sup>).
+
+
 #### Lineal
 
 Para el [problema de invertir una cadena](https://notas.uristolar.com/ejercicios-algoritmos#reverse-string), una posible solución iterativa es:
