@@ -1,9 +1,9 @@
 ---
 path: /preguntas-javascript
-date: 2019-08-08
+date: 2019-08-06
 title: Preguntas y Respuestas de JS
 tags: ['preguntas', 'respuestas', 'javascript']
-excerpt: Preguntas y respuestas sobre temas y conceptos de JavaScript a manera de preparación para entrevistas laborales
+excerpt: 🇶 & 🇦's sobre temas y conceptos de JavaScript a manera de preparación para entrevistas laborales
 image: ./brackets.png
 ---
 ## 0.1. ¿Qué es hoisting?
@@ -467,3 +467,72 @@ Podemos calcular su longitud utilizando el método [Object.keys()](https://devel
 ```javascript
 console.log(Object.keys(assoc).length)
 ```
+
+
+## Preguntas teóricas
+
+- ¿Cuál es la diferencia entre los operadores `==` y `===`?
+> La diferencia es que el operador `==` no compara el tipo de dato de los elementos a comparar y el `===` si. Por ejemplo:
+
+```javascript
+0 == false // true, auto type coercion
+0 === false // false, diferente tipo
+1 == "1" // true, auto type coercion
+1 === "1" // false, diferente tipo
+```
+
+- ¿Dónde se deben poner los scripts de JS en una página web?
+> Depende, pero por lo general convienen poner todos los scripts en un solo archivo minificado, puesto que se realizará una sola petición para obtener el archivo vs múltiples. En el caso de JS en línea (in-line) es recomendable ponerlo hasta abajo de la etiqueta body de cierre, de esta manera no bloqueará el render de la página.
+
+- ¿Qué es un objeto JavaScript?
+> Es una colección de datos que contienen propiedades (asociación entre pares llave-valor) y métodos. Cada elemento en un documento es un objeto manipulable gracias al DOM.
+
+- ¿Qué es event bubbling y event capturing?
+> Ambos son métodos de propagación de eventos en la API del DOM HTML. El event bubbling ocasiona que todos los eventos en los nodos hijo sean pasados a los nodos padre. En el event capturing el elemento exterior captura el evento y lo propaga hacia los elementos internos.
+
+- ¿Qué es `this` en JavaScript?
+> This es una palabra reservada que hace referencia al objeto  dueño del método. 
+
+- ¿Qué es una closure?
+> Una función declarada dentro de otra función y que tiene acceso a su propia scope y a la de su función padre
+
+- ¿Qué es el global namespace o espacio de nombres global?
+> Un espacio de nombres es un "contenedor" para un conjunto de identificadores, funciones, métudos, etc. El espacio de nombres global es el "mas exterior", correspondiente al objeto global.
+
+- Menciona dos paradigmas de programación importantes en JavaScript
+> 1. Orientado a Objetos, soportado a través de la herencia por prototipos
+> 2. Funcional
+
+- ¿Qué es programación funcional?
+> La programación funcional produce programas a través de la composición matemática de funciones y evita compartir su estado, así como mutación de datos y evitar efectos secundarios (funciones puras).
+
+- ¿Qué diferencia hay entre herencia de clases y herencia por prototipos?
+> Herencia por clases: Las instancias (objetos) heredan de clases (como un plano o descripción de la clase) y crean relaciones sub-clase: taxonomías de jerarquías de clases. Las instancias normalmente se instancian usando funciones contructor con la palabra reservada `new`. La herencia por clases puede o no usar la palabra reservada `class` de ES6.
+>
+> Herencia por prototipos: Las instancias heredan directamente de otros objetos, normalmente a través de funciones que implementan el patrón de diseño factory o usando `Object.create()`. Las instancias pueden estar compuestas de muchos objetos diferentes, permitiendo "herencia selectiva".
+
+- ¿Qué es two way data binding (o enlace de datos bidireccional) y el flujo de datos unidireccional y cómo se diferencían?
+> El two way data binding significa que los campos en la UI están enlazados dinñamicamente a un modelo de datos de tal forma que cuando la UI cambia, el modelo de datos también cambia, y viceversa. Por ejemplo el framework Angular
+>
+> El flujo de datos unidireccional significa que el modelo es la única fuente de verdad. Los cambios en la UI mandan un mensaje de cambio de datos en el modelo (o store, en React) generado por el usuario. Únicamente el modelo tiene acceso a cambiar el estado de la aplicación. Esto hace que los datos fluyan en una única dirección. Por ejemplo el framework React.
+
+- ¿Cuáles son los pros y contras de arquitecturas monolíticas vs arquitecturas orientadas a microservicios?
+> Una arquitectura monolítica significa que la aplicación está escrita como una unidad de código con cohesión, cuyos componentes están diseñados para trabajar en conjunto, compartiendo el mismo espacio de memoria y recursos.
+>
+> **Pros de arq. monolítica:** Su mayor ventaja es que la mayoría de aplicaciones típicamente tienen un gran número de responsabilidades compartidas, como generación de bitácoras (logging), establecer límites de consumo (rate limitting) y funciones de seguridad, como auditorías y protección contra DOS.
+>
+> **Contras de arq. monolítica:** Los servicios monolíticos tienden a estar altamente acoplados y a medida que la aplicación evoluciona, se vuelve dificil aislar los servicios con objeto de brindarles indenendencia en cuanto a escalabilidad o mantenibilidad. También son mas difíciles de entender porque normalmente tienen muchas dependencias y efectos secundarios que no son tan obvios cuando se observa un servicio o controlador particular.
+>
+>
+> **Pros de arq. microservicios:** Normalmente están mejor organizadas puesto que cada microservicio tiene un trabajo específico y no le debería de afectar el trabajo de los otros componentes. Están bajamente acoplados y son más fáciles de componer y reconfigurar para diferentes propósitos. También suelen tener mejor desempeño dependiendo de cómo estén organizados puesto que es posible (y común) que estén aislados y se puedan escalar independientemente del resto de la aplicación.
+>
+> **Contras de arq. microservicios:** Mientras se desarrolla una arquitectura de microservicios probablemente se vislumbren temas o asuntos que no estaban considerados originalmente en la etapa de diseño. También se crea un esfuerzo adicional para separar los módulos de acuerdo a responsabilidades, o encapsular responsabilidades compartidas en otra capa de servicio por la cual haya que rutear todo el tráfico. Normalmente los microservicios se despliegan en su propia VM o contenedor, causando mas trabajo en administrar dicha virtualización u orquestación de cluster contenedores.
+
+- ¿Qué es la programación asíncrona y porqué es importante en JavaScript?
+> La programación síncrona significa que,  exceptuando condicionales y llamadas a funciones, el código es ejecutado secuencialmente de arriba hacia abajo, generando bloqueos en tareas de larga ejecución, como peticiones a red o lectura/escrituda a disco.
+>
+> La programación asíncrona significa que la ejecución se realiza en un **bucle de eventos (event loop)**. Cuando se realiza una operación bloqueante (como las mencionadas anteriormente) la petición inicia y el código sigue ejecutándose sin generar bloqueos. Cuando la respuesta a la petición está lista, se genera una interrupción lo cual ocasiona que se ejecute un manejador de eventos (event handler), donde el flujo de control continúa. De esta forma, un único hilo de un programa puede manejar muchas operaciones concurrentes.
+>
+> Las UI son asíncronas por naturaleza, lo que significa que el servidor trabaja de la misma manera, esperando la respuesta de la red en un bucle y aceptando más peticiones entrantes mientras que se atiende la primera.
+>
+> Esto es importante en JavaScript porque incrementa el desempeño en el servidor y es un comportamiento "natural" en el código del cliente.
