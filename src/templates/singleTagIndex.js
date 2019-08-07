@@ -7,7 +7,7 @@ const SingleTagTemplate = ({ data, pageContext }) => {
 
   return (
     <section className='section'>
-      <div className='container'>
+      <div className='container content'>
         <p className='title'>Notas acerca de {tagName}</p>
         <ul>
           {posts.map((post, idx) => {

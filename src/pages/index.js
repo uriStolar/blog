@@ -19,7 +19,7 @@ const Layout = ({ data }) => {
                     <Link to={frontmatter.path}>
                       <p className='title'>{frontmatter.title}</p>
                       <div className='card-image'>
-                        <figure className='image is-4by3'>
+                        <figure className='image is-5by4'>
                           <img
                             src={frontmatter.image.childImageSharp.sizes.src}
                             srcSet={frontmatter.image.childImageSharp.sizes.srcSet}
