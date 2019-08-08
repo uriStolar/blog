@@ -471,6 +471,11 @@ console.log(Object.keys(assoc).length)
 
 ## Preguntas teóricas
 
+- ¿Cuál es la diferencia entre `null`, `undefined` y `undeclared` y cómo revisar dichos valores?
+> - `undefined` es una variable que ha sido declarada pero no tiene asignado un valor, también puede ser un tipo de variable `typeof variable === undefined`
+> - `null` puede ser el valor asignado a una variable para representar ausencia de un valor, también es un tipo de objeto `typeof null // object`
+> - `undeclared` indica que una variable no ha sido declarada, al hacer referencia a ella se arrojará un `ReferenceError: variable is not defined`
+
 - ¿Cuál es la diferencia entre los operadores `==` y `===`?
 > La diferencia es que el operador `==` no compara el tipo de dato de los elementos a comparar y el `===` si. Por ejemplo:
 
@@ -481,6 +486,36 @@ console.log(Object.keys(assoc).length)
 1 === "1" // false, diferente tipo
 ```
 
+- ¿Qué herramientas del lenguaje JavaScript se pueden utilizar para iterar sobre las propiedades de un objeto y los elementos de un arreglo?
+> Para iterar sobre las propiedades de un objeto podemos utilizar el bucle `for...in` y para iterar sobre los elementos de un arreglo podemos utilizar el bucle `for...of`
+
+- ¿Cuál es la diferencia entre el bucle `Array.forEach()` y el método `Array.map()`?
+> El bucle `forEach()` ejecuta una función una vez por cada elemento de un arreglo (mutándolo), pero no entrega un valor de retorno.
+>
+> El método `map()` crea un nuevo arreglo con el resultado de llamar una función en cada elemento del arreglo a mapear y retorna el nuevo arreglo (del mismo tamaño que el original).
+
+- Menciona un uso común de una función anónima
+> En operaciones asíncronas, las `callback` suelen ser funciones anónimas
+
+- ¿Cuál es la diferencia entre native objects y host objects?
+> Un native object es un objeto definido por alguna especificación de ECMAScript (Object, Date, Math, parseInt, eval, String.indexOf, String.replace, etc).
+>
+> Un objeto host es cualquier objeto que no sea un objeto nativo, como WebAPIs (XMLHttpRequest, setTimeout, getElementsByTagName, window, document, location, history, etc.).
+
+- ¿Cuál es la diferencia entre `Function.apply` y `Function.call`?
+> Ambas permiten especificar un valor de `this` para la función a invocar, pero la diferencia es que `apply` te permite invocar a la función con sus argumentos especificados como un `a`rreglo y `call` requiere que los argumentos sean listados específicamente (separados por `c`omas).
+
+- ¿Cuál es la diferencia entre `function Person()`, `var person = Person()` y `var person = new Person()`?
+> `function Person()` es una declaración de una función.
+>
+> `var person = Person()` retorna el valor de la función `Person()` y se lo asigna a la variable `person`
+>
+> `var person = new Person()` crea una instancia basada en la función `Person()` por lo que `person` es un objeto.
+
+- ¿Cuál es la diferencia entre `function foo(){}` y `var foo = function(){}`?
+> La primera es una declaración de función, la cual es evaluada en la scope que la contiene y la segunda es una expresión función, la cual crea una función anónima (aunque podría tener un nombre) y la asigna a la variable `foo`
+
+
 - ¿Dónde se deben poner los scripts de JS en una página web?
 > Depende, pero por lo general convienen poner todos los scripts en un solo archivo minificado, puesto que se realizará una sola petición para obtener el archivo vs múltiples. En el caso de JS en línea (in-line) es recomendable ponerlo hasta abajo de la etiqueta body de cierre, de esta manera no bloqueará el render de la página.
 
@@ -490,8 +525,10 @@ console.log(Object.keys(assoc).length)
 - ¿Qué es event bubbling y event capturing?
 > Ambos son métodos de propagación de eventos en la API del DOM HTML. El event bubbling ocasiona que todos los eventos en los nodos hijo sean pasados a los nodos padre. En el event capturing el elemento exterior captura el evento y lo propaga hacia los elementos internos.
 
-- ¿Qué es `this` en JavaScript?
-> This es una palabra reservada que hace referencia al objeto  dueño del método. 
+- ¿Qué es `this` en JavaScript y cómo ha cambiado el uso de `this` a partir de ES6?
+> This es una palabra reservada que hace referencia al objeto  dueño del método.
+>
+>Su uso ha cambiado en particular con la implementación de las [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) las cuales no tienen su propio valor de `this` sino que hacen referencia al valor de `this` dentro del contexto de ejecución que la contiene.
 
 - ¿Qué es una closure?
 > Una función declarada dentro de otra función y que tiene acceso a su propia scope y a la de su función padre
@@ -507,9 +544,12 @@ console.log(Object.keys(assoc).length)
 > La programación funcional produce programas a través de la composición matemática de funciones y evita compartir su estado, así como mutación de datos y evitar efectos secundarios (funciones puras).
 
 - ¿Qué diferencia hay entre herencia de clases y herencia por prototipos?
-> Herencia por clases: Las instancias (objetos) heredan de clases (como un plano o descripción de la clase) y crean relaciones sub-clase: taxonomías de jerarquías de clases. Las instancias normalmente se instancian usando funciones contructor con la palabra reservada `new`. La herencia por clases puede o no usar la palabra reservada `class` de ES6.
+> **Herencia por clases:** Las instancias (objetos) heredan de clases (como un plano o descripción de la clase) y crean relaciones sub-clase: taxonomías de jerarquías de clases. Las instancias normalmente se instancian usando funciones contructor con la palabra reservada `new`. La herencia por clases puede o no usar la palabra reservada `class` de ES6.
 >
-> Herencia por prototipos: Las instancias heredan directamente de otros objetos, normalmente a través de funciones que implementan el patrón de diseño factory o usando `Object.create()`. Las instancias pueden estar compuestas de muchos objetos diferentes, permitiendo "herencia selectiva".
+> **Herencia por prototipos:** Las instancias heredan directamente de otros objetos, normalmente a través de funciones que implementan el patrón de diseño factory o usando `Object.create()`. Las instancias pueden estar compuestas de muchos objetos diferentes, permitiendo "herencia selectiva".
+
+- ¿Cómo funciona la herencia por prototipos?
+> Un objeto puede apuntar a otro y heredar todas sus propiedades. Todos los objetos en JavaScript tienen un enlace al objeto prototipo y cuando se quiere acceder a la propiedad de un objeto, dicha propiedad no sólo se buscará en el objeto sino también en su prototipo, el prototipo de su prototipo y así sucesivamente hasta que se encuentre o se llegue al fin de la cadena de prototipos.
 
 - ¿Qué es two way data binding (o enlace de datos bidireccional) y el flujo de datos unidireccional y cómo se diferencían?
 > El two way data binding significa que los campos en la UI están enlazados dinñamicamente a un modelo de datos de tal forma que cuando la UI cambia, el modelo de datos también cambia, y viceversa. Por ejemplo el framework Angular
