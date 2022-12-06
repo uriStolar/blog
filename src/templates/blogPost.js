@@ -22,8 +22,8 @@ const Template = ({ data, pageContext }) => {
               <div className='card-image'>
                 <figure className='image is-4by3'>
                   <img
-                    src={image.childImageSharp.sizes.src}
-                    srcSet={image.childImageSharp.sizes.srcSet}
+                    src={image.childImageSharp.gatsbyImageData.images.sources[0].src}
+                    srcSet={image.childImageSharp.gatsbyImageData.images.sources[0].srcSet}
                     alt={`Pic for ${title}`} />
                 </figure>
               </div>
@@ -51,9 +51,7 @@ export const query = graphql`
         date(formatString: "LL", locale: "es-MX")
         image {
           childImageSharp {
-            sizes(maxWidth: 720, quality: 85) {
-              ...GatsbyImageSharpSizes_noBase64
-            }
+            gatsbyImageData(width: 720, quality: 85)
           }
         }
       }

@@ -12,6 +12,7 @@ const Layout = ({ data }) => {
         <div className='container'>
           {edges.map(edge => {
             const { frontmatter } = edge.node
+            console.log({frontmatter}, frontmatter.title)
             return (
               <div key={frontmatter.path}>
                 <div className='card'>
@@ -21,8 +22,8 @@ const Layout = ({ data }) => {
                       <div className='card-image'>
                         <figure className='image is-5by4'>
                           <img
-                            src={frontmatter.image.childImageSharp.sizes.src}
-                            srcSet={frontmatter.image.childImageSharp.sizes.srcSet}
+                            src={frontmatter.image.childImageSharp.gatsbyImageData.images.sources[0].src}
+                            srcSet={frontmatter.image.childImageSharp.gatsbyImageData.images.sources[0].srcSet}
                             alt={`Pic for ${frontmatter.title}`} />
                         </figure>
                       </div>
@@ -59,9 +60,7 @@ export const query = graphql`
             date
             image {
               childImageSharp {
-                sizes(maxWidth: 720, quality: 85) {
-                  ...GatsbyImageSharpSizes_noBase64
-                }
+                gatsbyImageData(width: 720, quality: 85)
               }
             }
           }
