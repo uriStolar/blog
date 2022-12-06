@@ -22,7 +22,7 @@
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-sharp": "^4.2.0",
     "gatsby-remark-autolink-headers": "^5",
-    "gatsby-remark-images": "^4.2.0",
+    "gatsby-remark-images": "^5",
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^4.2.0",
