@@ -72,48 +72,49 @@ const createTagPages = (createPage, posts) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
-    const blogPostTemplate = path.resolve('src/templates/blogPost.js')
 
-    resolve(
-      graphql(`
-        query {
-          allMarkdownRemark(
-            sort: { order: DESC, fields: [frontmatter___date] }
-            limit: 1000
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  path
-                  title
-                  tags
+    return new Promise((resolve, reject) => {
+      const blogPostTemplate = path.resolve('src/templates/blogPost.js')
+
+      resolve(
+        graphql(`
+          query {
+            allMarkdownRemark(
+              sort: { order: DESC, fields: [frontmatter___date] }
+              limit: 1000
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    path
+                    title
+                    tags
+                  }
                 }
               }
             }
           }
-        }
-      `)
-        .then(result => {
-          if (result.errors) {
-            return reject(result.errors)
-          }
-          const posts = result.data.allMarkdownRemark.edges
-          createTagPages(createPage, posts)
-          posts.forEach(({ node }, idx) => {
-            const path = node.frontmatter.path
-            createPage({
-              path,
-              component: blogPostTemplate,
-              context: {
-                pathSlug: path,
-                prev: idx === 0 ? null : posts[idx - 1].node,
-                next: idx === posts.length - 1 ? null : posts[idx + 1].node
-              }
+        `)
+          .then(result => {
+            if (result.errors) {
+              return reject(result.errors)
+            }
+            const posts = result.data.allMarkdownRemark.edges
+            createTagPages(createPage, posts)
+            posts.forEach(({ node }, idx) => {
+              const path = node.frontmatter.path
+              createPage({
+                path,
+                component: blogPostTemplate,
+                context: {
+                  pathSlug: path,
+                  prev: idx === 0 ? null : posts[idx - 1].node,
+                  next: idx === posts.length - 1 ? null : posts[idx + 1].node
+                }
+              })
+              resolve()
             })
-            resolve()
           })
-        })
-    )
-  })
+      )
+    })
 }

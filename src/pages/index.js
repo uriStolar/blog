@@ -12,7 +12,6 @@ const Layout = ({ data }) => {
         <div className='container'>
           {edges.map(edge => {
             const { frontmatter } = edge.node
-            console.log({frontmatter}, frontmatter.title)
             return (
               <div key={frontmatter.path}>
                 <div className='card'>
