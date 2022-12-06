@@ -24,7 +24,7 @@
     "gatsby-remark-autolink-headers": "^5",
     "gatsby-remark-images": "^6",
     "gatsby-source-filesystem": "^4.2.0",
-    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-remark": "^4.2.0",
     "gatsby-transformer-sharp": "^4.2.0",
     "github-markdown-css": "^3.0.1",
     "react": "^16.8.6",
