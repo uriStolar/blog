@@ -15,12 +15,6 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions, loaders }) => {
           test: /\.s[ac]ss$/i,
           use: [
             loaders.null(),
-            // Creates `style` nodes from JS strings
-            'style-loader',
-            // Translates CSS into CommonJS
-            'css-loader',
-            // Compiles Sass to CSS
-            'sass-loader',
           ],
         },
       ],
