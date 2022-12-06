@@ -1,5 +1,5 @@
 @charset 'utf-8';
-@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
 
 $footer-padding: 1rem 1rem 1rem;
 $navbar-height: 4rem;
@@ -7,17 +7,37 @@ $navbar-height: 4rem;
 @import './../../node_modules/bulma/bulma.sass';
 
 body {
-  font-family: 'Roboto Slab'
+  font-family: 'Rubik';
+  background-image: linear-gradient(
+    165deg,
+    #{'hsl(260deg 61% 62%)'} 0%,
+    #{'hsl(225deg 86% 65%)'} 21%,
+    #{'hsl(205deg 100% 50%)'} 30%,
+    #{'hsl(200deg 100% 50%)'} 39%,
+    #{'hsl(196deg 100% 50%)'} 46%,
+    #{'hsl(190deg 100% 48%)'} 54%,
+    #{'hsl(183deg 100% 44%)'} 61%,
+    #{'hsl(175deg 100% 44%)'} 69%,
+    #{'hsl(161deg 78% 67%)'} 79%,
+    #{'hsl(137deg 81% 79%)'} 100%
+  );
 }
 
 .card {
   max-width: 720px;
   margin: auto;
+  border-radius: 12px;
+  box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
+-webkit-box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
+-moz-box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
+
 }
 
 .blogCard {
   border: none;
   box-shadow: none;
+  max-width: 70vw;
+  padding: 2vh 3vw 4vh 3vw;
 }
 
 ::selection {
