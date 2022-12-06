@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build --force",
+    "build": "gatsby build --verbose",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
@@ -19,7 +19,7 @@
     "gatsby": "^4.20.0",
     "gatsby-core-utils": "^4.2.0",
     "gatsby-plugin-google-analytics": "^4",
-    "gatsby-plugin-image": "^3.2.0",
+    "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-sass": "^2.1.1",
     "gatsby-plugin-sharp": "^4.2.0",
     "gatsby-remark-autolink-headers": "^2.1.3",
