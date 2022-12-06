@@ -1,6 +1,6 @@
 const path = require('path')
 
-exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+exports.onCreateWebpackConfig = ({ getConfig, stage, actions, loaders }) => {
   const config = getConfig()
   if (stage.startsWith('develop') && config.resolve) {
     config.resolve.alias = {
@@ -8,6 +8,24 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
       'react-dom': '@hot-loader/react-dom'
     }
   }
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.s[ac]ss$/i,
+          use: [
+            loaders.null(),
+            // Creates `style` nodes from JS strings
+            'style-loader',
+            // Translates CSS into CommonJS
+            'css-loader',
+            // Compiles Sass to CSS
+            'sass-loader',
+          ],
+        },
+      ],
+    }
+  })
 }
 
 const createTagPages = (createPage, posts) => {

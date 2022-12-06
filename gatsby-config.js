@@ -5,6 +5,9 @@
  */
 
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   /* Your site config here */
   siteMetadata: {
     title: 'Notas de Uri',
@@ -24,7 +27,6 @@ module.exports = {
         path: `${__dirname}/src/pages`
       }
     },
-    `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
