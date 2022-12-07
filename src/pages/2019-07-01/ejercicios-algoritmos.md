@@ -4,7 +4,7 @@ date: 2019-07-01
 title: Ejercicios de Algoritmos y Estructuras de Datos
 tags: ['algoritmos', 'javascript', 'hackerrank']
 excerpt: Notas sobre ejercicios de algoritmos y estructuras de datos vistos en HackerRank y otras fuentes. Se irán agregando mas a esta nota conforme se vayan resolviendo.
-image: ./fractal.jpg
+image: ./fractal.png
 ---
 #### 📗Índice 
 

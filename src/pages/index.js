@@ -19,7 +19,7 @@ const Layout = ({ data }) => {
                     <Link to={frontmatter.path}>
                       <p className='title'>{frontmatter.title}</p>
                       <div className='card-image'>
-                        <figure className='image is-5by4'>
+                        <figure className='image'>
                           <img
                             src={frontmatter.image.childImageSharp.gatsbyImageData.images.sources[0].src}
                             srcSet={frontmatter.image.childImageSharp.gatsbyImageData.images.sources[0].srcSet}

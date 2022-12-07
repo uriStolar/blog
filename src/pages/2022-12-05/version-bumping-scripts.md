@@ -1,6 +1,6 @@
 ---
 path: /version-bumping-scripts
-date: 2022-12-06
+date: 2022-12-05
 title: Scripts para automatizar el incremento de versión de un proyecto node
 tags: ['node', 'npm', 'scripts','version', 'increase', 'bump']
 excerpt: Shell scripts FTW! 🐚 📜

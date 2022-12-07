@@ -4,7 +4,7 @@ date: 2019-08-06
 title: Preguntas y Respuestas de JS
 tags: ['preguntas', 'respuestas', 'javascript']
 excerpt: 🇶 & 🇦's sobre temas y conceptos de JavaScript a manera de preparación para entrevistas laborales
-image: ./brackets.png
+image: ./js-questions.png
 ---
 ## 0.1. ¿Qué es hoisting?
 
