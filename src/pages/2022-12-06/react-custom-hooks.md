@@ -1,12 +1,16 @@
 ---
 path: /react-custom-hooks
 date: 2022-12-06
-title: React Custom Hooks
+title: Custom Hooks en React
 tags: ['react', 'hooks', 'custom', 'localStorage', 'useEffect', 'useState']
-excerpt: Compendio de custom hooks para React ⚛️🪝
+excerpt: Compilación de custom hooks que considero útiles y dignos de compartir ⚛️🪝
 image: ./hooks.png
 ---
-# useLocalStorageState
+# Intro
+
+Los custom hooks son una nueva adición en React 16.8. Te permiten utilizar el state y otras funcionalidades de React sin escribir una clase. El construir tus propios hooks te permite extraer la lógica den componente en funciones reutilizables. A continuación presento los custom hooks que considero útiles:
+
+## useLocalStorageState
 
 Este custom hook sirve para crear una variable de estado que persista su valor en el `localStorage` del browser, aunque bien se podría implementar usando [AsyncStorage](https://github.com/react-native-async-storage/async-storage), [React Native KeyChain](https://github.com/oblador/react-native-keychain), [Expo SecureStore](https://docs.expo.dev/versions/latest/sdk/securestore/) o alguna otra librería de almacenamiento
 

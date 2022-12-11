@@ -21,6 +21,7 @@ const Layout = ({ data }) => {
                       <div className='card-image'>
                         <figure className='image'>
                           <img
+                            className='allPostsImage'
                             src={frontmatter.image.childImageSharp.gatsbyImageData.images.sources[0].src}
                             srcSet={frontmatter.image.childImageSharp.gatsbyImageData.images.sources[0].srcSet}
                             alt={`Pic for ${frontmatter.title}`} />
@@ -40,7 +41,7 @@ const Layout = ({ data }) => {
         </div>
         <div className='navabar is-size-4'>
           <br />
-          <Link to='/tags' className='blackText'>Buscar notas por etiquetas</Link>
+          <Link to='/tags' className='blackText underline'>Buscar notas por etiquetas</Link>
         </div>
       </section>
     </div>

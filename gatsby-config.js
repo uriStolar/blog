@@ -11,7 +11,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: 'Notas de Uri',
-    description: 'Half a page of scribbled lines'
+    description: 'Ideas para compartir y preservar'
   },
   plugins: [
     {

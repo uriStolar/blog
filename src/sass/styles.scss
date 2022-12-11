@@ -11,7 +11,8 @@ body {
   font-family: 'Noto Serif';
   background-image: linear-gradient(
     165deg,
-    #{'hsl(260deg 61% 62%)'} 0%,
+    #{'hsl(255deg 57% 40%)'} 0%,
+    #{'hsl(240deg 61% 62%)'} 10%,
     #{'hsl(225deg 86% 65%)'} 21%,
     #{'hsl(205deg 100% 50%)'} 30%,
     #{'hsl(200deg 100% 50%)'} 39%,
@@ -20,14 +21,14 @@ body {
     #{'hsl(183deg 100% 44%)'} 61%,
     #{'hsl(175deg 100% 44%)'} 69%,
     #{'hsl(161deg 78% 67%)'} 79%,
-    #{'hsl(137deg 81% 79%)'} 100%
+    #{'hsl(137deg 81% 81%)'} 100%
   );
 }
 
 .card {
   max-width: 720px;
   margin: auto;
-  border-radius: 1.4vw;
+  border-radius: 1vw;
   box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
 -webkit-box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
 -moz-box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
@@ -41,6 +42,9 @@ body {
   .postImage {
       max-width: 66vw;
   }
+  .allPostsImage {
+      max-width: 66vw;
+  }
 }
 
 @media (min-width: 430px) {
@@ -49,6 +53,9 @@ body {
   }
   .postImage {
       max-width: 50vw;
+  }
+  .allPostsImage {
+      max-width: 43.3vw;
   }
 }
 
@@ -90,6 +97,10 @@ body {
   color: #363636;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .bigText {
   font-family: 'Noto Serif' !important;
   font-size: 4.5vw !important;
@@ -110,5 +121,9 @@ footer {
 .postImage {
   width: auto;
   height: auto;
+  margin: auto;
+}
+
+.allPostsImage {
   margin: auto;
 }
