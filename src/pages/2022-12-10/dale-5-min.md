@@ -29,8 +29,8 @@ Richard había pasado toda su carrera pensando en estos problemas. Les había de
 
 También hay una diferencia entre hacer preguntas y rechazar ideas. Rechazar ideas significa que tú "ya sabes". Hacer preguntas significa que "quieres saber". Hay que hacer más preguntas.
 
-Aprender a pensar primero en vez de reaccionar rápido es una tarea de toda la vida. Es difícil. Yo todavía soy impulsivo a veces cuando no debería. Pero realmente estoy disfrutando todos los beneficios de mejorar en esto.
+Aprender a pensar primero en vez de reaccionar rápido es una tarea de toda la vida. Es difícil. Yo todavía soy impulsivo a veces, cuando no debería. Pero realmente estoy disfrutando todos los beneficios de mejorar en esto.
 
-Si no estás seguro de porqué esto es importante, piensa en esta frase de Jonathan Ive acerca de las reverencias que Steve Jobs les hacia a las ideas:
+Si no estás seguro de porqué esto es importante, piensa en esta frase de Jonathan Ive acerca de las reverencias que Steve Jobs le hacia a las ideas:
 
 > _"Y así como Steve amaba las ideas, y amaba crear cosas, él trataba el proceso de la creatividad con una rara y maravillosa reverencia. Mira, yo pienso que él mejor que nadie entendió que ultimadamente las ideas pueden ser muy poderosas, ellas comienzan como pensamientos frágiles, apenas formados, tan fácilmente perdidos, tan fácilmente vulnerados, tan fácilmente aplastados."_
