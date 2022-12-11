@@ -9,23 +9,23 @@ const SiteNavFooter = props => {
       <ul className='container has-text-centered level'>
         <li className='level-item'>
           <Link to='/'>
-            <FontAwesomeIcon icon={faHome} size='lg' />
-            <span className='is-size-5'>&nbsp;Inicio</span>
+            <FontAwesomeIcon icon={faHome} size='lg' className='blackText'/>
+            <span className='is-size-5 blackText'>&nbsp;Inicio</span>
           </Link>
         </li>
         {props.prev && (
           <li className='level-item'>
             <Link to={props.prev.frontmatter.path}>
-              <FontAwesomeIcon icon={faArrowLeft} size='lg' />
-              <span className='is-size-5'>&nbsp;Anterior</span>
+              <FontAwesomeIcon icon={faArrowLeft} size='lg' className='blackText' />
+              <span className='is-size-5 blackText'>&nbsp;Anterior</span>
             </Link>
           </li>
         )}
         {props.next && (
           <li className='level-item'>
             <Link to={props.next.frontmatter.path}>
-              <span className='is-size-5'>Siguiente&nbsp;</span>
-              <FontAwesomeIcon icon={faArrowRight} size='lg' />
+              <span className='is-size-5 blackText'>Siguiente&nbsp;</span>
+              <FontAwesomeIcon icon={faArrowRight} size='lg' className='blackText' />
             </Link>
           </li>
         )}

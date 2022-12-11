@@ -1,5 +1,6 @@
 @charset 'utf-8';
-@import url('https://fonts.googleapis.com/css?family=Rubik');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
 
 $footer-padding: 1rem 1rem 1rem;
 $navbar-height: 4rem;
@@ -7,7 +8,7 @@ $navbar-height: 4rem;
 @import './../../node_modules/bulma/bulma.sass';
 
 body {
-  font-family: 'Rubik';
+  font-family: 'Noto Serif';
   background-image: linear-gradient(
     165deg,
     #{'hsl(260deg 61% 62%)'} 0%,
@@ -26,7 +27,7 @@ body {
 .card {
   max-width: 720px;
   margin: auto;
-  border-radius: 12px;
+  border-radius: 1.4vw;
   box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
 -webkit-box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
 -moz-box-shadow: -2px 2px 14px 4px rgba(250, 250, 250,0.420);
@@ -68,3 +69,32 @@ body {
   right center / contain no-repeat,
   left center rgb(49, 85, 220);
 }
+
+.allTags {
+  flex: 1;
+  height: 100vh;
+}
+
+.bottom {
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+}
+
+.blackText {
+  color: #363636;
+}
+
+.bigText {
+  font-family: 'Noto Serif' !important;
+  font-size: 4.5vw !important;
+}
+
+footer {
+  background-color: transparent !important;
+}
+
+.md {
+  font-family: 'IBM Plex Sans' !important;
+}
+

@@ -40,7 +40,7 @@ const Layout = ({ data }) => {
         </div>
         <div className='navabar is-size-4'>
           <br />
-          <Link to='/tags'>Buscar notas por sus tags</Link>
+          <Link to='/tags' className='blackText'>Buscar notas por etiquetas</Link>
         </div>
       </section>
     </div>

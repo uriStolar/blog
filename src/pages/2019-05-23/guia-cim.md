@@ -9,7 +9,7 @@ image: ./mountaineering.png
 ## Montañismo 🏔️
 Excursión de zonas de relieve con fines deportivos, científicos, lúdicos, espirituales, etc.
 
-## Áreas del montañismo 🚵⛰️🏔️🧗🏽
+## Áreas del montañismo 🧗🏽🏔️
 - Media montaña: Caminatas en cotas inferiores a los 4000 m.s.n.m, Ascenso en marcha por senderos.
 - Alta montaña: Caminatas en cotas superiores a los 4000 m.s.n.m, Escasez de oxígeno, existencia de nieve, hielo, radiación solar excesiva
 - Espeleología: Progresión en sistemas de cavernas y ríos subterráneos

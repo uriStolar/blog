@@ -15,8 +15,8 @@ const Template = ({ data, pageContext }) => {
         <div className='container'>
           <div className='card blogCard'>
             <div className='card-content'>
-              <p className='title has-text-centered'>{title}</p>
-              <p className='is-size-6 has-text-centered'>Publicado el {date}</p>
+              <h1 className='title has-text-centered'>{title}</h1>
+              <p className='is-size-6 has-text-centered'>🗓 Publicado el {date}</p>
               <br />
               <p className='subtitle'>{excerpt}</p>
               <div className='card-image'>
@@ -29,7 +29,7 @@ const Template = ({ data, pageContext }) => {
               </div>
             </div>
             <div
-              className='markdown-body content'
+              className='markdown-body content md'
               dangerouslySetInnerHTML={{ __html: html }}
             />
           </div>

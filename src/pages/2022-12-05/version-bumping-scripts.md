@@ -22,9 +22,9 @@ En este caso:
 - El número `2` es el número de versión menor y un incremento en este número puede indicar nuevas funcionalidades en el proyecto, pero no implican incompatibilidad entre versiones.
 - El número `3` es el número de parche de esta versión y suele indicar correcciones de errores o mejoras menores.
 
-Usualmente se tiene que incrementar este número de alguna manera en algún momento del desarrollo del proyecto. 
+Usualmente se tiene que incrementar este número de alguna manera en algún momento del desarrollo del proyecto.
 
-En un trabajo anterior era frecuente que yo olvidara hacer este incremento de versiones, que usualmente tenía que hacerse en el archivo `package.json` pero bien podría ser en otro archivo, por ejemplo el `app.json` de proyectos de React Native con Expo, o algún otro archivo de texto aunque no fuera necesariamente JSON. Dada esta situación de olvidar hacer este incremento, me decidí a automatizar esta tarea repetitiva e implementé una solución basada en [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), [Husky](https://github.com/typicode/husky) y [AWK](https://en.wikipedia.org/wiki/AWK).
+En un trabajo anterior era frecuente que yo olvidara hacer este incremento de versiones, que usualmente tenía que hacerse en el archivo `package.json` pero bien podría ser en otro archivo, por ejemplo el `app.json` de proyectos de React Native con Expo, o en general cualquier archivo de texto, no necesariamente con contenido JSON. Dada esta situación de olvidar hacer este incremento, me decidí a automatizar esta tarea repetitiva e implementé una solución basada en [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), [Husky](https://github.com/typicode/husky) y [AWK](https://en.wikipedia.org/wiki/AWK).
 
 Utilizamos Husky para ejecutar un script de bash cuando se ejecuta un git hook en nuestro proyecto, en este caso el `pre-commit` hook, el cual se activa antes de realizar un commit de git.
 
