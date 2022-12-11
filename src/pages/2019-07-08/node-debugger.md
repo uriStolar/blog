@@ -6,7 +6,7 @@ tags: ['node', 'debugger', 'javascript', 'REPL']
 excerpt: Cómo utilizar el debugger integrado de NodeJS (no, no es el console.log())
 image: ./debug.png
 ---
-## Depurando Node 🚫🐞
+## 🚫🐞 Depurando Node
 
 Recientemente investigué cómo utilizar el debugger de NodeJS y lo condenso en los siguientes pasos: 
 

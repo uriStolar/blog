@@ -2,7 +2,7 @@
 path: /dale-5-minutos
 date: 2022-12-10
 title: Dale cinco minutos
-tags: ['slow thinking', 'thoughts']
+tags: ['slow thinking', 'thoughts', 'jjs']
 excerpt: Acerca de la importancia de reflexionar sobre una idea que nos han compartido antes de descartarla por no estar de acuerdo con ella
 image: ./five-mins.png
 ---
