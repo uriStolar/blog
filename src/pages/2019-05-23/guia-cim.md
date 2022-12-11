@@ -2,7 +2,7 @@
 path: /guia-examen-cim
 date: 2019-05-23
 title: Guía para examen del CIM - AEM IPN
-tags: ['CIM', 'AEM', 'IPN', 'montañismo']
+tags: ['montañismo']
 excerpt: Resumen con los puntos mas relevantes de las clases teóricas del CIM-A 2019 de la AEM-IPN.
 image: ./mountaineering.png
 ---

@@ -2,7 +2,7 @@
 path: /memoization
 date: 2019-08-05
 title: Memoización
-tags: ['algoritmos', 'memoization']
+tags: ['algoritmos', 'desarrollo de software']
 excerpt: ¿Qué es la memoización (memoization en inglés, no confundir con "memorización") y cómo nos puede ayudar a reducir el tiempo de ejecución de un algoritmo?
 image: ./memoization.png
 ---

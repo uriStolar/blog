@@ -8,12 +8,13 @@ const SingleTagTemplate = ({ data, pageContext }) => {
   return (
     <section className='section allTags'>
       <div className='container content'>
-        <p className='title'>Notas acerca de "{tagName}"</p>
+        <p className='title'>Notas sobre "{tagName}"</p>
         <ul>
           {posts.map((post, idx) => {
             return (
-              <li key={idx} className='subtitle blackText'>
-                <Link to={post.frontmatter.path} className='subtitle blackText'>{post.frontmatter.title}</Link>
+              <li key={idx} className='subtitle blackText listNoStyle'>
+                <span>👉🏼 </span>
+                <Link to={post.frontmatter.path} className='blackText underline'>{post.frontmatter.title}</Link>
               </li>
             )
           })}

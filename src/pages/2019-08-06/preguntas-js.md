@@ -2,7 +2,7 @@
 path: /preguntas-javascript
 date: 2019-08-06
 title: Preguntas y Respuestas de JS
-tags: ['preguntas', 'respuestas', 'javascript']
+tags: ['desarrollo de software', 'javascript']
 excerpt: 🇶 & 🇦's sobre temas y conceptos de JavaScript a manera de preparación para entrevistas laborales
 image: ./js-questions.png
 ---

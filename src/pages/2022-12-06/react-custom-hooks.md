@@ -2,7 +2,7 @@
 path: /react-custom-hooks
 date: 2022-12-06
 title: Custom Hooks en React
-tags: ['react', 'hooks', 'custom', 'localStorage', 'useEffect', 'useState']
+tags: ['react', 'desarrollo de software']
 excerpt: Compilación de custom hooks que considero útiles y dignos de compartir ⚛️🪝
 image: ./hooks.png
 ---

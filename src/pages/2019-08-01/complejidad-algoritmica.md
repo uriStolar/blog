@@ -2,7 +2,7 @@
 path: /complejidad-algoritmica
 date: 2019-08-01
 title: Complejidad Algorítmica
-tags: ['algoritmos', 'complejidad']
+tags: ['algoritmos', 'desarrollo de software']
 excerpt: ¿Qué es la complejidad algorítmica?, ¿cuál es la diferencia entre la notación O, Theta y Omega?, ¿cuáles son los tiempos de ejecución más comunes?
 image: ./bigO.png
 ---

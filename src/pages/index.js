@@ -8,6 +8,12 @@ const Layout = ({ data }) => {
   return (
     <div>
       <SiteHeader className='is-size-1' />
+      <div className='is-size-4 has-text-centered'>
+          <br />
+          <span>🔎 </span>
+          <Link to='/tags' className='underline whiteText'>Buscar notas por etiquetas</Link>
+          <br />
+        </div>
       <section className='section has-text-centered'>
         <div className='container'>
           {edges.map(edge => {
@@ -38,10 +44,6 @@ const Layout = ({ data }) => {
               </div>
             )
           })}
-        </div>
-        <div className='navabar is-size-4'>
-          <br />
-          <Link to='/tags' className='blackText underline'>Buscar notas por etiquetas</Link>
         </div>
       </section>
     </div>
