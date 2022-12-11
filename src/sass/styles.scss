@@ -38,12 +38,17 @@ body {
   .blogCard {
     max-width: 96vw;
   }
+  .postImage {
+      max-width: 66vw;
+  }
 }
 
 @media (min-width: 430px) {
   .blogCard {
     max-width: 70vw;
-
+  }
+  .postImage {
+      max-width: 50vw;
   }
 }
 
@@ -98,3 +103,8 @@ footer {
   font-family: 'IBM Plex Sans' !important;
 }
 
+.postImage {
+  width: auto;
+  height: auto;
+  margin: auto;
+}

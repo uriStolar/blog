@@ -20,7 +20,7 @@ const Template = ({ data, pageContext }) => {
               <br />
               <p className='subtitle'>{excerpt}</p>
               <div className='card-image'>
-                <figure className='image is-4by3'>
+                <figure className='image is-4by3 postImage'>
                   <img
                     src={image.childImageSharp.gatsbyImageData.images.sources[0].src}
                     srcSet={image.childImageSharp.gatsbyImageData.images.sources[0].srcSet}
