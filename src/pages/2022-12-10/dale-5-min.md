@@ -33,4 +33,4 @@ Aprender a pensar primero en vez de reaccionar rápido es una tarea de toda la v
 
 Si no estás seguro de porqué esto es importante, piensa en esta frase de Jonathan Ive acerca de las reverencias que Steve Jobs le hacia a las ideas:
 
-> _"Y así como Steve amaba las ideas, y amaba crear cosas, él trataba el proceso de la creatividad con una rara y maravillosa reverencia. Mira, yo pienso que él mejor que nadie entendió que ultimadamente las ideas pueden ser muy poderosas, ellas comienzan como pensamientos frágiles, apenas formados, tan fácilmente perdidos, tan fácilmente vulnerados, tan fácilmente aplastados."_
+> _"Y así como Steve amaba las ideas, y amaba crear cosas, él trataba el proceso de la creatividad con una rara y maravillosa reverencia. Mira, yo pienso que él mejor que nadie entendió que al final las ideas pueden ser muy poderosas, pero ellas comienzan como pensamientos frágiles, apenas formados, tan fácilmente perdidos, tan fácilmente vulnerados, tan fácilmente aplastados."_
