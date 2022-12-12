@@ -22,6 +22,7 @@ const Template = ({ data, pageContext }) => {
               <div className='card-image'>
                 <figure className='image is-4by3 postImage'>
                   <img
+                    className='postImage'
                     src={image.childImageSharp.gatsbyImageData.images.sources[0].src}
                     srcSet={image.childImageSharp.gatsbyImageData.images.sources[0].srcSet}
                     alt={`Pic for ${title}`} />
